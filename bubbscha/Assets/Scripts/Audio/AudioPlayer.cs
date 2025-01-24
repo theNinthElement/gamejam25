@@ -17,6 +17,9 @@ namespace Audio
         {
             var index = 0;
             //index = EnvironmentController.GetAudioIndex();
+            if(_audioCollections.Count == 0) return;
+            index = _audioCollections.Count > index ? index : 0;
+            
             var collection = _audioCollections[index];
             _playingCollection?.Stop();
             collection.Play();
@@ -33,6 +36,12 @@ namespace Audio
             var positiveVolume = Math.Max(0f, mappedInput);
 
             _playingCollection?.SetVolume(positiveVolume, negativeVolume);
+        }
+        
+        public void StopLoopingAudio()
+        {
+            _playingCollection?.Stop();
+            _playingCollection = null;
         }
 
         [Serializable]
