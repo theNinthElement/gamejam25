@@ -1,6 +1,7 @@
 //using System.Collections;
 //using System.Collections.Generic;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,41 +12,23 @@ public class Street_Lane : MonoBehaviour
     public Street_Tiles tilePrefab;
     public float movingSpeed = 12;
     public int tilesToPreSpawn = 15; //How many tiles should be pre-spawned
-    public int tilesWithoutObstacles = 3; //How many tiles at the beginning should not have obstacles, good for warm-up
 
-    List<Street_Tiles> spawnedTiles = new List<Street_Tiles>();
-    int nextTileToActivate = -1;
-    [HideInInspector]
-    public bool gameOver = false;
-    static bool gameStarted = false;
-    float score = 0;
-
-    public static Street_Lane instance;
+    private List<Street_Tiles> _spawnedTiles;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
-
-        Vector3 spawnPosition = startPoint.position;
-        int tilesWithNoObstaclesTmp = tilesWithoutObstacles;
-        for (int i = 0; i < tilesToPreSpawn; i++)
+        _spawnedTiles = new List<Street_Tiles>();
+        var spawnPosition = startPoint.position;
+        for (var i = 0; i < tilesToPreSpawn; i++)
         {
             spawnPosition -= tilePrefab.startPoint.localPosition;
-            Street_Tiles spawnedTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity) as Street_Tiles;
-            if (tilesWithNoObstaclesTmp > 0)
-            {
-                spawnedTile.DeactivateAllObstacles();
-                tilesWithNoObstaclesTmp--;
-            }
-            else
-            {
-                spawnedTile.ActivateRandomObstacle();
-            }
+            var spawnedTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
 
             spawnPosition = spawnedTile.endPoint.position;
             spawnedTile.transform.SetParent(transform);
-            spawnedTiles.Add(spawnedTile);
+            _spawnedTiles.Add(spawnedTile);
         }
     }
 
@@ -54,59 +37,19 @@ public class Street_Lane : MonoBehaviour
     {
         // Move the object upward in world space x unit/second.
         //Increase speed the higher score we get
-        if (!gameOver && gameStarted)
+        var frontTile = _spawnedTiles.First();
+        if (GameManager.instance.isRunning)
         {
-            transform.Translate(-spawnedTiles[0].transform.forward * Time.deltaTime * (movingSpeed + (score / 500)), Space.World);
-            score += Time.deltaTime * movingSpeed;
+            transform.Translate(-_spawnedTiles.First().transform.forward * (Time.deltaTime * movingSpeed), Space.World);
         }
 
-        if (mainCamera.WorldToViewportPoint(spawnedTiles[0].endPoint.position).z < 0)
+        if (mainCamera.WorldToViewportPoint(_spawnedTiles[0].endPoint.position).z < 0)
         {
             //Move the tile to the front if it's behind the Camera
-            Street_Tiles tileTmp = spawnedTiles[0];
-            spawnedTiles.RemoveAt(0);
-            tileTmp.transform.position = spawnedTiles[spawnedTiles.Count - 1].endPoint.position - tileTmp.startPoint.localPosition;
-            tileTmp.ActivateRandomObstacle();
-            spawnedTiles.Add(tileTmp);
+            
+            _spawnedTiles.RemoveAt(0);
+            frontTile.transform.position = _spawnedTiles[^1].endPoint.position - frontTile.startPoint.localPosition;
+            _spawnedTiles.Add(frontTile);
         }
-
-        if (gameOver || !gameStarted)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (gameOver)
-                {
-                    //Restart current scene
-                    Scene scene = SceneManager.GetActiveScene();
-                    SceneManager.LoadScene(scene.name);
-                }
-                else
-                {
-                    //Start the game
-                    gameStarted = true;
-                }
-            }
-        }
-    }
-
-    void OnGUI()
-    {
-        if (gameOver)
-        {
-            GUI.color = Color.red;
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 200, 200), "Game Over\nYour score is: " + ((int)score) + "\nPress 'Space' to restart");
-        }
-        else
-        {
-            if (!gameStarted)
-            {
-                GUI.color = Color.red;
-                GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 200, 200), "Press 'Space' to start");
-            }
-        }
-
-
-        GUI.color = Color.green;
-        GUI.Label(new Rect(5, 5, 200, 25), "Score: " + ((int)score));
     }
 }

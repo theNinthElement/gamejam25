@@ -35,7 +35,6 @@ public class BubbleBehaviour : MonoBehaviour
     private void Update()
     {
         airTime += Time.deltaTime;
-        Debug.Log("AIRTIME: " + airTime);
     }
 
     private void OnCollisionEnter(Collision collision)

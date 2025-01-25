@@ -172,10 +172,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5459063381340630929, guid: c48ff2d2db602434c9dc2d2feccfbff1, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a2f8c03df9d52354b81ecc05fd2bbfa3, type: 2}
     - target: {fileID: 6274907622898943377, guid: c48ff2d2db602434c9dc2d2feccfbff1, type: 3}
       propertyPath: m_Name
       value: RikschaCharacter

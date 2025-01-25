@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -15,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject continueButton;
     public RikschaController player;
     [SerializeField] InputActionAsset actions;
+
+    public bool isRunning;
     //[SerializeField] int scoreThreshold=1000;
 
     //private int thresholdCount=0;
@@ -24,11 +22,18 @@ public class GameManager : MonoBehaviour
         rikschaActions = new RikschaControll();
         rikschaActions.InGame.PauseGame.performed += PauseGame;
         rikschaActions.InGame.Enable();
+        PauseGame();
     }
 
     private void PauseGame(InputAction.CallbackContext context)
     {
+        PauseGame();
+    }
+
+    private void PauseGame()
+    {
         pauseMenu.SetActive(true);
+        isRunning = false;
         rikschaActions.InGame.PauseGame.performed -= PauseGame;
         rikschaActions.InGame.PauseGame.performed += ContinueGame;
         Time.timeScale = 0.0f;
@@ -41,25 +46,25 @@ public class GameManager : MonoBehaviour
     public void ContinueGame()
     {
         pauseMenu.SetActive(false);
+        isRunning = true;
         rikschaActions.InGame.PauseGame.performed += PauseGame;
         rikschaActions.InGame.PauseGame.performed -= ContinueGame;
         Time.timeScale = 1.0f;
     }
     private void ContinueGame(InputAction.CallbackContext context)
     {
-        pauseMenu.SetActive(false);
-        rikschaActions.InGame.PauseGame.performed += PauseGame;
-        rikschaActions.InGame.PauseGame.performed -= ContinueGame;
-        Time.timeScale = 1.0f;
+        ContinueGame();
     }
     public void RestartGame()
     {
         Time.timeScale = 1.0f;
+        isRunning = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void GameOver()
     {
         //TODO: Stop Game, Show Scoreboard, Player can add his Score
+        isRunning = false;
         Time.timeScale = 0.0f;
         enterScore.SetActive(true);
         pauseMenu.SetActive(true);
@@ -69,13 +74,5 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Application closed");
         Application.Quit();
-        //EditorApplication.ExitPlaymode();
     }
-    //public void SpeedUp()
-    //{
-    //    if(GameStats.instance.GetScore() >= scoreThreshold)
-    //    {
-    //        player.moveSpeed += 1f;
-    //    }
-    //}
 }
