@@ -20,6 +20,7 @@ public class RikschaController : MonoBehaviour
     public float externalPushRecoverSpeed = 2;
 
     private Rigidbody bowlRigi;
+    private Animator rikschaAnimator;
 
     private bool tiltTurboActive = false;
 
@@ -81,6 +82,7 @@ public class RikschaController : MonoBehaviour
         currentPosition.x = Mathf.Clamp(currentPosition.x, roadBounds.x, roadBounds.y);
         rikschaTransform.position = startBasePosition + currentPosition;
         //rikschaTransform.GetComponent<Rigidbody>().MovePosition(startBasePosition + currentPosition);
+        rikschaAnimator.SetFloat("Blend Tree", currentMoveValue);
 
         externalPushForce = Mathf.Lerp(externalPushForce, 0, externalPushRecoverSpeed * Time.deltaTime);
 
