@@ -13,6 +13,7 @@ public class CollectibleScore : MonoBehaviour
         //if (other.CompareTag("Player"))
         //{
         GameStats.instance.ChangeScore(scoreBonus);
+        Renderer.Destroy(gameObject);
         //}
     }
 }

@@ -14,7 +14,8 @@ public class CollectibleMood : MonoBehaviour
         //Maybe identifier for player
         //if (other.CompareTag("Player"))
         //{
-            GameStats.instance.ChangeMood(moodBonus);
+        GameStats.instance.ChangeMood(moodBonus);
+        Renderer.Destroy(gameObject);
         //}
     }
 }
