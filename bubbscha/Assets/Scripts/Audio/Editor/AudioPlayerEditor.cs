@@ -6,7 +6,7 @@ namespace Audio.Editor
     [CustomEditor(typeof(AudioPlayer))]
     public class AudioPlayerEditor : UnityEditor.Editor
     {
-        private float _happinessValue; // Local slider value for the editor
+        private static float _happinessValue = 0.5f; // Local slider value for the editor
 
         public override void OnInspectorGUI()
         {
