@@ -1,22 +1,46 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private RikschaControll rikschaActions;
+    [SerializeField] GameObject pauseMenu;
     [SerializeField] RikschaController player;
+    [SerializeField] InputActionAsset actions;
+    private InputAction pause;
+
+    private void Awake()
+    {
+        rikschaActions = new RikschaControll();
+        rikschaActions.InGame.PauseGame.performed += PauseGame;
+    }
+
+    private void PauseGame(InputAction.CallbackContext context)
+    {
+        pauseMenu.SetActive(true);
+        rikschaActions.InGame.PauseGame.performed -= PauseGame;
+        rikschaActions.InGame.PauseGame.performed += ContinueGame;
+        Time.timeScale = 0.0f;
+    }
+
     public void PlayerCollision(float force)
     {
         player.AddExternalPushForce(force);
     }
-
-    public void PauseGame()
+    private void ContinueGame(InputAction.CallbackContext context)
     {
-        Time.timeScale = 0.0f;
-    }
-    public void ContinueGame()
-    {
+        pauseMenu.SetActive(false);
+        rikschaActions.InGame.PauseGame.performed += PauseGame;
+        rikschaActions.InGame.PauseGame.performed -= ContinueGame;
         Time.timeScale = 1.0f;
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void GameOver()
     {

@@ -26,30 +26,8 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         {
             ""name"": ""Menu"",
             ""id"": ""febddbaf-3fc4-44da-8a5e-ed2cb26f5042"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""582e3385-266a-423a-8302-0f9e00e308b0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""1212258b-fc9b-4c72-b72d-79f1bc52441e"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
+            ""actions"": [],
+            ""bindings"": []
         },
         {
             ""name"": ""InGame"",
@@ -77,6 +55,15 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
                     ""name"": ""TurboRotation"",
                     ""type"": ""Button"",
                     ""id"": ""b6c69b24-bb2e-48aa-9922-71396aa4e522"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""829940ba-d9bb-4026-a26c-1d96c077a8f3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -182,6 +169,17 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
                     ""action"": ""TurboRotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9707128e-b725-448c-83bc-d0dc5b04e7e2"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -190,12 +188,12 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
 }");
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
-        m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
         // InGame
         m_InGame = asset.FindActionMap("InGame", throwIfNotFound: true);
         m_InGame_RikschaMoveHorizontal = m_InGame.FindAction("RikschaMoveHorizontal", throwIfNotFound: true);
         m_InGame_BowlRotationX = m_InGame.FindAction("BowlRotationX", throwIfNotFound: true);
         m_InGame_TurboRotation = m_InGame.FindAction("TurboRotation", throwIfNotFound: true);
+        m_InGame_PauseGame = m_InGame.FindAction("PauseGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -257,12 +255,10 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
     // Menu
     private readonly InputActionMap m_Menu;
     private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
-    private readonly InputAction m_Menu_Newaction;
     public struct MenuActions
     {
         private @RikschaControll m_Wrapper;
         public MenuActions(@RikschaControll wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Menu_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -272,16 +268,10 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
         }
 
         private void UnregisterCallbacks(IMenuActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
         }
 
         public void RemoveCallbacks(IMenuActions instance)
@@ -306,6 +296,7 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_RikschaMoveHorizontal;
     private readonly InputAction m_InGame_BowlRotationX;
     private readonly InputAction m_InGame_TurboRotation;
+    private readonly InputAction m_InGame_PauseGame;
     public struct InGameActions
     {
         private @RikschaControll m_Wrapper;
@@ -313,6 +304,7 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         public InputAction @RikschaMoveHorizontal => m_Wrapper.m_InGame_RikschaMoveHorizontal;
         public InputAction @BowlRotationX => m_Wrapper.m_InGame_BowlRotationX;
         public InputAction @TurboRotation => m_Wrapper.m_InGame_TurboRotation;
+        public InputAction @PauseGame => m_Wrapper.m_InGame_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -331,6 +323,9 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
             @TurboRotation.started += instance.OnTurboRotation;
             @TurboRotation.performed += instance.OnTurboRotation;
             @TurboRotation.canceled += instance.OnTurboRotation;
+            @PauseGame.started += instance.OnPauseGame;
+            @PauseGame.performed += instance.OnPauseGame;
+            @PauseGame.canceled += instance.OnPauseGame;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -344,6 +339,9 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
             @TurboRotation.started -= instance.OnTurboRotation;
             @TurboRotation.performed -= instance.OnTurboRotation;
             @TurboRotation.canceled -= instance.OnTurboRotation;
+            @PauseGame.started -= instance.OnPauseGame;
+            @PauseGame.performed -= instance.OnPauseGame;
+            @PauseGame.canceled -= instance.OnPauseGame;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -363,12 +361,12 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
     public InGameActions @InGame => new InGameActions(this);
     public interface IMenuActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
     }
     public interface IInGameActions
     {
         void OnRikschaMoveHorizontal(InputAction.CallbackContext context);
         void OnBowlRotationX(InputAction.CallbackContext context);
         void OnTurboRotation(InputAction.CallbackContext context);
+        void OnPauseGame(InputAction.CallbackContext context);
     }
 }

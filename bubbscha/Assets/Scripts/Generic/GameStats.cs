@@ -24,7 +24,7 @@ public class GameStats : MonoBehaviour
     //[SerializeField] GameObject scoreboard;
     public UnityEvent<float> moodChanged;
     public UnityEvent<int> scoreChanged;
-    public UnityEvent peopleChanged;
+    public UnityEvent<int> peopleChanged;
 
     private void Awake()
     {
@@ -54,7 +54,11 @@ public class GameStats : MonoBehaviour
     public void ChangePeople(int change)
     {
         people += change;
-        peopleChanged.Invoke();
+        peopleChanged.Invoke(people);
+    }
+    public int GetScore()
+    {
+        return score;
     }
 
     IEnumerator moodDecrease()
