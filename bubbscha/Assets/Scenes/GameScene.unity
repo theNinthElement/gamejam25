@@ -206,6 +206,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3da01ed1e45b1c14cb6d1be332e8568e, type: 3}
   m_PrefabInstance: {fileID: 29747795}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &180826445 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4536549825059354200, guid: 2cac4de1acb92a0498133e79808e1546, type: 3}
+  m_PrefabInstance: {fileID: 1732283704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &338493931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,6 +1470,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 38629744503292850, guid: 2cac4de1acb92a0498133e79808e1546, type: 3}
+      propertyPath: rikschaTransform
+      value: 
+      objectReference: {fileID: 1732283706}
+    - target: {fileID: 38629744503292850, guid: 2cac4de1acb92a0498133e79808e1546, type: 3}
+      propertyPath: bowlAnchorPointTransform
+      value: 
+      objectReference: {fileID: 180826445}
     - target: {fileID: 1154841590914573098, guid: 2cac4de1acb92a0498133e79808e1546, type: 3}
       propertyPath: m_Name
       value: PlayerSetup
@@ -1525,6 +1538,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99ab946fd7c47d48a291f837074eef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1732283706 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2976114634297344051, guid: 2cac4de1acb92a0498133e79808e1546, type: 3}
+  m_PrefabInstance: {fileID: 1732283704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1803503496 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 447184413706248498, guid: c48deb6c577f22f4c8887b5d6632ac61, type: 3}
