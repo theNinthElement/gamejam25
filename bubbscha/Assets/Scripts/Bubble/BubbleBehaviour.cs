@@ -9,6 +9,7 @@ public class BubbleBehaviour : MonoBehaviour
     public float gravityMultiplier = 0.1f;
     public LayerMask groundLayerMask;
     public LayerMask bowlLayerMask;
+    public ParticleSystem popEffect;
 
     private float airTime = 0;
 
@@ -42,6 +43,10 @@ public class BubbleBehaviour : MonoBehaviour
         if (groundLayerMask == (groundLayerMask | (1 << collision.gameObject.layer)))
         {
             Debug.Log("POP");
+            if (popEffect != null)
+            {
+                popEffect.Play();
+            }
         }
     }
 
