@@ -49,6 +49,7 @@ public class GameStats : MonoBehaviour
         if (mood <= 0f)
         {
             ChangePeople(-1);
+            mood = 1f;
             if (people <= 0)
             {
                 gameOver.Invoke();
