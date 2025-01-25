@@ -6,14 +6,14 @@ public class CollectibleScore : MonoBehaviour
 {
     [SerializeField] GameStats stats;
     [Tooltip("Number added to the score")]
-    [SerializeField] float scoreBonus;
+    [SerializeField] int scoreBonus;
 
     private void OnTriggerEnter(Collider other)
     {
         //Maybe identifier for player
         //if (other.CompareTag("Player"))
         //{
-            stats.increaseScore(scoreBonus);
+            stats.IncreaseScore(scoreBonus);
         //}
     }
 }

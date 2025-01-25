@@ -13,7 +13,7 @@ public class ObstacleMood : MonoBehaviour
         //Maybe identifier for player
         //if (other.CompareTag("Player"))
         //{
-        stats.decreaseMood(moodPenalty);
+        stats.DecreaseMood(moodPenalty);
         //}
     }
 }

@@ -8,28 +8,26 @@ public class GameStats : MonoBehaviour
 {
     [Tooltip("Number for passenger mood")]
     [SerializeField] float mood;
-
     [Tooltip("Number for collected points")]
-    [SerializeField] float score;
-    UnityEvent moodChanged;
-    UnityEvent scoreChanged;
-
-    public void increaseMood(float moodBonus)
+    [SerializeField] int score;
+    public UnityEvent moodChanged;
+    public UnityEvent scoreChanged;
+    public void IncreaseMood(float moodBonus)
     {
         mood += moodBonus;
         moodChanged.Invoke();
     }
-    public void decreaseMood(float moodPenalty)
+    public void DecreaseMood(float moodPenalty)
     {
         mood -= moodPenalty;
         moodChanged.Invoke();
     }
-    public void increaseScore(float scoreBonus)
+    public void IncreaseScore(int scoreBonus)
     {
         score += scoreBonus;
         scoreChanged.Invoke();
     }
-    public void decreaseScore(float scorePenalty)
+    public void DecreaseScore(int scorePenalty)
     {
         score -= scorePenalty;
         scoreChanged.Invoke();
