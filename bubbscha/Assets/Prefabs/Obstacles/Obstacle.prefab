@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86c36354041e114982aa8d43ff077b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: -10
+  force: 3
   collision:
     m_PersistentCalls:
       m_Calls:
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86c36354041e114982aa8d43ff077b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 10
+  force: 3
   collision:
     m_PersistentCalls:
       m_Calls:
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86c36354041e114982aa8d43ff077b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 10
+  force: 3
   collision:
     m_PersistentCalls:
       m_Calls:
