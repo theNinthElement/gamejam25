@@ -7,6 +7,7 @@ public class RikschaController : MonoBehaviour
 {
     private RikschaControll rikschaActions;
     public Transform rikschaTransform;
+    public Transform bowlAnchorPointTransform;
     public Transform bowlTransform;
     public Vector2 roadBounds;
     public Vector2 tiltingBounds;
@@ -55,7 +56,7 @@ public class RikschaController : MonoBehaviour
 
     private void TurboRotation_started(InputAction.CallbackContext obj)
     {
-        AddExternalPushForce(Random.Range(-20, 20));
+        //AddExternalPushForce(Random.Range(-20, 20));
         tiltTurboActive = true;
     }
 
@@ -72,17 +73,19 @@ public class RikschaController : MonoBehaviour
         //Vector3 newPos = rikschaTransform.position;
         currentPosition.x += (externalPushForce + (currentMoveValue * moveSpeed)) * Time.deltaTime;
         currentPosition.x = Mathf.Clamp(currentPosition.x, roadBounds.x, roadBounds.y);
-        rikschaTransform.position = currentPosition;
+        //rikschaTransform.position = currentPosition;
+        rikschaTransform.GetComponent<Rigidbody>().MovePosition(currentPosition);
 
         externalPushForce = Mathf.Lerp(externalPushForce, 0, externalPushRecoverSpeed * Time.deltaTime);
 
         currentTiltValue = Mathf.Lerp(currentTiltValue, inputTiltValue, tiltKeepupSpeed * Time.deltaTime);
-        Debug.Log("Bowl: " + currentTiltValue);
+        //Debug.Log("Bowl: " + currentTiltValue);
         //Vector3 newRotation = bowlTransform.rotation.eulerAngles;
         currentTiltAngle.z -= currentTiltValue * tiltSpeed * Time.deltaTime * (tiltTurboActive ? tiltTurboMultiplier : 1);
         currentTiltAngle.z = Mathf.Clamp(currentTiltAngle.z, tiltingBounds.x, tiltingBounds.y);
-        bowlTransform.rotation = Quaternion.Euler(currentTiltAngle);
-
+        //bowlTransform.rotation = Quaternion.Euler(currentTiltAngle);
+        bowlTransform.GetComponent<Rigidbody>().MovePosition(bowlAnchorPointTransform.position);
+        bowlTransform.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(currentTiltAngle));
     }
 
     public void AddExternalPushForce(float force)
@@ -93,5 +96,10 @@ public class RikschaController : MonoBehaviour
     public float GetBowlAngle()
     {
         return currentTiltAngle.z;
+    }
+
+    public Vector3 GetBowlPosition()
+    {
+        return bowlTransform.position;
     }
 }
