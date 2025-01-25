@@ -10,8 +10,9 @@ public class GameStats : MonoBehaviour
     [SerializeField] float mood;
 
     [Tooltip("Number for collected points")]
-    [SerializeField] float highscore;
+    [SerializeField] float score;
     UnityEvent moodChanged;
+    UnityEvent scoreChanged;
 
     public void increaseMood(float moodBonus)
     {
@@ -22,5 +23,15 @@ public class GameStats : MonoBehaviour
     {
         mood -= moodPenalty;
         moodChanged.Invoke();
+    }
+    public void increaseScore(float scoreBonus)
+    {
+        score += scoreBonus;
+        scoreChanged.Invoke();
+    }
+    public void decreaseScore(float scorePenalty)
+    {
+        score -= scorePenalty;
+        scoreChanged.Invoke();
     }
 }
