@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8626313526680045349}
   - component: {fileID: 1022004917891412676}
+  - component: {fileID: 6485576016264459436}
   m_Layer: 0
   m_Name: Gamestats
   m_TagString: Untagged
@@ -46,9 +47,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mood: 1
   score: 0
+  scoreOverTime: 10
+  moodOverTime: -0.01
+  people: 1
   moodChanged:
     m_PersistentCalls:
       m_Calls: []
   scoreChanged:
     m_PersistentCalls:
       m_Calls: []
+  peopleChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  gameOver:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6485576016264459436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2678977960507525183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6dfd9189ec046498e9ee4ed3337b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

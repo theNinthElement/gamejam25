@@ -66,7 +66,6 @@ public class GameStats : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("Update Mood " + mood);
             yield return new WaitForSeconds(1);
             ChangeMood(moodOverTime * people);
         }
