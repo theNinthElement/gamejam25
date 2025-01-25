@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7913381569295117680, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
       propertyPath: m_Name
-      value: CollectibleScore
+      value: CollectiblePerson
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -77,4 +77,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e9de57c77328849b4b5a6131e60c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreBonus: 0
+  people: 1
