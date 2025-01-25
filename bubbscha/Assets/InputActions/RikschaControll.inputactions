@@ -1,0 +1,148 @@
+{
+    "name": "RikschaControll",
+    "maps": [
+        {
+            "name": "Menu",
+            "id": "febddbaf-3fc4-44da-8a5e-ed2cb26f5042",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "582e3385-266a-423a-8302-0f9e00e308b0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1212258b-fc9b-4c72-b72d-79f1bc52441e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InGame",
+            "id": "335fb0d3-a7f0-40b6-ba12-e6f7c35619d8",
+            "actions": [
+                {
+                    "name": "RikschaMoveHorizontal",
+                    "type": "Value",
+                    "id": "97b04dd5-4729-4e6c-9b6f-0408e51e483b",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "BowlRotationX",
+                    "type": "Value",
+                    "id": "f43c41a7-d4b4-4333-9710-5dcfc8c258b2",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "7ec36c16-5317-441d-9dde-4bfa3577dfdb",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RikschaMoveHorizontal",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "dacdce31-d930-42f3-b1e7-f3f2dc5af9d9",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RikschaMoveHorizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "b38d3767-8e2d-4295-a4b1-ac81fb2be737",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RikschaMoveHorizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "bdfd44fb-1924-4702-9b36-88a50e49fe80",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RikschaMoveHorizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "0856b786-9296-4dd6-bea2-e0d75e60a466",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BowlRotationX",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "98a3b51f-cb41-4a1f-a3de-7fbe3b013efe",
+                    "path": "<Mouse>/delta/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BowlRotationX",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "10ab2074-1556-46f6-bd98-f2a3998fd397",
+                    "path": "<Mouse>/delta/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BowlRotationX",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b7795514-8c9d-4152-8000-b0e38425728c",
+                    "path": "<Gamepad>/rightStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BowlRotationX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
