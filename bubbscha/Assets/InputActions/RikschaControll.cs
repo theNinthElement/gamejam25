@@ -26,8 +26,30 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         {
             ""name"": ""Menu"",
             ""id"": ""febddbaf-3fc4-44da-8a5e-ed2cb26f5042"",
-            ""actions"": [],
-            ""bindings"": []
+            ""actions"": [
+                {
+                    ""name"": ""SubmitScore"",
+                    ""type"": ""Button"",
+                    ""id"": ""daa3bd73-85f8-4b73-904d-81f94b07f3e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""14764ed0-d1c2-4267-9322-047052147d89"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SubmitScore"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         },
         {
             ""name"": ""InGame"",
@@ -188,6 +210,7 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
 }");
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_SubmitScore = m_Menu.FindAction("SubmitScore", throwIfNotFound: true);
         // InGame
         m_InGame = asset.FindActionMap("InGame", throwIfNotFound: true);
         m_InGame_RikschaMoveHorizontal = m_InGame.FindAction("RikschaMoveHorizontal", throwIfNotFound: true);
@@ -255,10 +278,12 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
     // Menu
     private readonly InputActionMap m_Menu;
     private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
+    private readonly InputAction m_Menu_SubmitScore;
     public struct MenuActions
     {
         private @RikschaControll m_Wrapper;
         public MenuActions(@RikschaControll wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SubmitScore => m_Wrapper.m_Menu_SubmitScore;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -268,10 +293,16 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
+            @SubmitScore.started += instance.OnSubmitScore;
+            @SubmitScore.performed += instance.OnSubmitScore;
+            @SubmitScore.canceled += instance.OnSubmitScore;
         }
 
         private void UnregisterCallbacks(IMenuActions instance)
         {
+            @SubmitScore.started -= instance.OnSubmitScore;
+            @SubmitScore.performed -= instance.OnSubmitScore;
+            @SubmitScore.canceled -= instance.OnSubmitScore;
         }
 
         public void RemoveCallbacks(IMenuActions instance)
@@ -361,6 +392,7 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
     public InGameActions @InGame => new InGameActions(this);
     public interface IMenuActions
     {
+        void OnSubmitScore(InputAction.CallbackContext context);
     }
     public interface IInGameActions
     {

@@ -4,8 +4,30 @@
         {
             "name": "Menu",
             "id": "febddbaf-3fc4-44da-8a5e-ed2cb26f5042",
-            "actions": [],
-            "bindings": []
+            "actions": [
+                {
+                    "name": "SubmitScore",
+                    "type": "Button",
+                    "id": "daa3bd73-85f8-4b73-904d-81f94b07f3e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "14764ed0-d1c2-4267-9322-047052147d89",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SubmitScore",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         },
         {
             "name": "InGame",
