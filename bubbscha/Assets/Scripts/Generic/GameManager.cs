@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject continueButton;
     [SerializeField] RikschaController player;
     [SerializeField] InputActionAsset actions;
+    //[SerializeField] int scoreThreshold=1000;
 
+    //private int thresholdCount=0;
     private void Awake()
     {
         rikschaActions = new RikschaControll();
@@ -67,4 +69,11 @@ public class GameManager : MonoBehaviour
         Application.Quit();
         //EditorApplication.ExitPlaymode();
     }
+    //public void SpeedUp()
+    //{
+    //    if(GameStats.instance.GetScore() >= scoreThreshold)
+    //    {
+    //        player.moveSpeed += 1f;
+    //    }
+    //}
 }

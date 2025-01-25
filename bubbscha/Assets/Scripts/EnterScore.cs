@@ -16,13 +16,11 @@ public class EnterScore : MonoBehaviour
     {
         rikschaActions = new RikschaControll();
         rikschaActions.Menu.SubmitScore.performed += SubmitScore;
-        rikschaActions.Menu.Enable();
     }
 
     private void SubmitScore(InputAction.CallbackContext context)
     {
         submitScore.Invoke(gameObject.GetComponent<TMP_InputField>().text);
         gameObject.SetActive(false);
-        rikschaActions.Menu.Disable();
     }
 }
