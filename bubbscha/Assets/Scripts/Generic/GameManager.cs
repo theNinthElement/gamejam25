@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -62,6 +63,8 @@ public class GameManager : MonoBehaviour
     }
     public void EndGame()
     {
+        Debug.Log("Application closed");
         Application.Quit();
+        //EditorApplication.ExitPlaymode();
     }
 }
