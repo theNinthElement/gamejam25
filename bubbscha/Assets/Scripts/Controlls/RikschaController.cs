@@ -48,6 +48,8 @@ public class RikschaController : MonoBehaviour
         rikschaActions.InGame.TurboRotation.started += TurboRotation_started;
         rikschaActions.InGame.TurboRotation.canceled += TurboRotation_canceled; 
         rikschaActions.InGame.Enable();
+
+        GameManager.instance.player = this;
     }
 
     private void RikschaMoveHorizontal_performed(InputAction.CallbackContext obj)

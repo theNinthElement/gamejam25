@@ -8,17 +8,19 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     private RikschaControll rikschaActions;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject enterScore;
     [SerializeField] GameObject continueButton;
-    [SerializeField] RikschaController player;
+    public RikschaController player;
     [SerializeField] InputActionAsset actions;
     //[SerializeField] int scoreThreshold=1000;
 
     //private int thresholdCount=0;
     private void Awake()
     {
+        instance = this;
         rikschaActions = new RikschaControll();
         rikschaActions.InGame.PauseGame.performed += PauseGame;
         rikschaActions.InGame.Enable();

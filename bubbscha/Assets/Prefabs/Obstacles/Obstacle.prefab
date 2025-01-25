@@ -181,7 +181,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -200,7 +200,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86c36354041e114982aa8d43ff077b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 1
+  force: -10
+  collision:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1378322097607629053, guid: e8eacd6257009df41884a981e0867927, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayerCollision
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5560908285608030584
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +318,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -322,7 +337,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86c36354041e114982aa8d43ff077b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 1
+  force: 10
+  collision:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1378322097607629053, guid: e8eacd6257009df41884a981e0867927, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayerCollision
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6382464195849762306
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +453,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -442,4 +472,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86c36354041e114982aa8d43ff077b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 1
+  force: 10
+  collision:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1378322097607629053, guid: e8eacd6257009df41884a981e0867927, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayerCollision
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
