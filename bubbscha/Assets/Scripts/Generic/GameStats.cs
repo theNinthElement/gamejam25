@@ -4,11 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-/*
- * Highscore over time
- * people multiplicator
- * people as lives
- */
+
 
 public class GameStats : MonoBehaviour
 {
@@ -21,8 +17,11 @@ public class GameStats : MonoBehaviour
     [SerializeField] int scoreOverTime = 10;
     [Tooltip("Decrase of mood per second")]
     [SerializeField] float moodOverTime = -0.01f;
-    [Tooltip("Number for collected people")]
+    [Tooltip("Number for collected people. Multiplier for score and mood.")]
     [SerializeField] int people = 1;
+    //[Tooltip("Movement speed of the player")]
+    //public float speed = 1f;
+    //[SerializeField] GameObject scoreboard;
     public UnityEvent<float> moodChanged;
     public UnityEvent<int> scoreChanged;
     public UnityEvent peopleChanged;
@@ -63,7 +62,7 @@ public class GameStats : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1);
-            ChangeMood(moodOverTime);
+            ChangeMood(moodOverTime * people);
         }
     }
     IEnumerator scoreIncrease()

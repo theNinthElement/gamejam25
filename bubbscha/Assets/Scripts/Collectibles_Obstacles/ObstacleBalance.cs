@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObstacleBalance : MonoBehaviour
 {
     [SerializeField] float force = 1f;
     //[SerializeField] float radius =1f;
     //[SerializeField] float upward = 1f;
+    UnityEvent<int> collision;
     private void OnTriggerEnter(Collider other)
     {
         GetComponent<Collider>().enabled = false;
