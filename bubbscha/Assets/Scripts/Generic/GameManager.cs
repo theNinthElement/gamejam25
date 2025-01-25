@@ -9,14 +9,15 @@ public class GameManager : MonoBehaviour
 {
     private RikschaControll rikschaActions;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject continueButton;
     [SerializeField] RikschaController player;
     [SerializeField] InputActionAsset actions;
-    private InputAction pause;
 
     private void Awake()
     {
         rikschaActions = new RikschaControll();
         rikschaActions.InGame.PauseGame.performed += PauseGame;
+        rikschaActions.InGame.Enable();
     }
 
     private void PauseGame(InputAction.CallbackContext context)
@@ -30,6 +31,13 @@ public class GameManager : MonoBehaviour
     public void PlayerCollision(float force)
     {
         player.AddExternalPushForce(force);
+    }
+    public void ContinueGame()
+    {
+        pauseMenu.SetActive(false);
+        rikschaActions.InGame.PauseGame.performed += PauseGame;
+        rikschaActions.InGame.PauseGame.performed -= ContinueGame;
+        Time.timeScale = 1.0f;
     }
     private void ContinueGame(InputAction.CallbackContext context)
     {
@@ -45,6 +53,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         //TODO: Stop Game, Show Scoreboard, Player can add his Score
+        Time.timeScale = 0.0f;
+        pauseMenu.SetActive(true);
+        continueButton.SetActive(false);
     }
     public void EndGame()
     {
