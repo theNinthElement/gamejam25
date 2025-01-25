@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CollectibleMood : MonoBehaviour
 {
-    [SerializeField] GameStats stats;
     [Tooltip("Number added to the mood")]
-    [SerializeField] float moodBonus;
+    [SerializeField][Range(-1, 1)] float moodBonus = 0f;
 
 
     private void OnTriggerEnter(Collider other)
