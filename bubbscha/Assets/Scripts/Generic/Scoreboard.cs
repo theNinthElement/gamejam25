@@ -27,11 +27,12 @@ public class Scoreboard : MonoBehaviour
     {
         
         highscoreList = new List<Highscore>();
+        highscoreList = HighScoreXML.instance.ReadScores();
         //Testentry
-        highscoreList.Add(new Highscore("A", 100));
-        highscoreList.Add(new Highscore("B", 200));
-        highscoreList.Add(new Highscore("C", 400));
-        highscoreList.Add(new Highscore("D", -100));
+        //highscoreList.Add(new Highscore("A", 100));
+        //highscoreList.Add(new Highscore("B", 200));
+        //highscoreList.Add(new Highscore("C", 400));
+        //highscoreList.Add(new Highscore("D", -100));
 
         foreach (Highscore highscore in highscoreList)
         {
@@ -44,6 +45,7 @@ public class Scoreboard : MonoBehaviour
         Highscore highscore = new Highscore(entry, GameStats.instance.GetScore());
         highscoreList.Add(highscore);
         InstanceHighscore(highscore);
+        HighScoreXML.instance.WriteScores(highscoreList);
     }
 
     private void InstanceHighscore(Highscore entry)
