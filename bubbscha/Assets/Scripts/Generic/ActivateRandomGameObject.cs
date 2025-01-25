@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Common
+namespace Generic
 {
     public class ActivateRandomGameObject : MonoBehaviour
     {
