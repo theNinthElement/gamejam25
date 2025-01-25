@@ -268,7 +268,7 @@ MonoBehaviour:
   _negativeChange:
     m_PersistentCalls:
       m_Calls: []
-  update: 0
+  Testing: 0
 --- !u!1 &8409369226548948574
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,11 +426,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060340013735245647, guid: b74b9953895e7794496c0b72974b417a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8431253
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9060340013735245647, guid: b74b9953895e7794496c0b72974b417a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 9060340013735245647, guid: b74b9953895e7794496c0b72974b417a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -438,15 +438,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060340013735245647, guid: b74b9953895e7794496c0b72974b417a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9060340013735245647, guid: b74b9953895e7794496c0b72974b417a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9060340013735245647, guid: b74b9953895e7794496c0b72974b417a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9060340013735245647, guid: b74b9953895e7794496c0b72974b417a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
