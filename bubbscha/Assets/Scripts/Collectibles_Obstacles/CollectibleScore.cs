@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CollectibleScore : MonoBehaviour
 {
-    [SerializeField] GameStats stats;
     [Tooltip("Number added to the score")]
     [SerializeField] int scoreBonus;
 
@@ -13,7 +12,7 @@ public class CollectibleScore : MonoBehaviour
         //Maybe identifier for player
         //if (other.CompareTag("Player"))
         //{
-            stats.IncreaseScore(scoreBonus);
+        GameStats.instance.ChangeScore(scoreBonus);
         //}
     }
 }

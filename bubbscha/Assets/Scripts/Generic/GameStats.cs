@@ -6,30 +6,26 @@ using UnityEngine.Events;
 
 public class GameStats : MonoBehaviour
 {
+    public static GameStats instance;
     [Tooltip("Number for passenger mood")]
-    [SerializeField] float mood;
+    [SerializeField][Range(0, 1)] float mood;
     [Tooltip("Number for collected points")]
     [SerializeField] int score;
-    public UnityEvent moodChanged;
+    public UnityEvent<float> moodChanged;
     public UnityEvent scoreChanged;
-    public void IncreaseMood(float moodBonus)
+
+    private void Awake()
+    {
+        instance = this;        
+    }
+    public void ChangeMood(float moodBonus)
     {
         mood += moodBonus;
-        moodChanged.Invoke();
+        moodChanged.Invoke(mood);
     }
-    public void DecreaseMood(float moodPenalty)
-    {
-        mood -= moodPenalty;
-        moodChanged.Invoke();
-    }
-    public void IncreaseScore(int scoreBonus)
+    public void ChangeScore(int scoreBonus)
     {
         score += scoreBonus;
-        scoreChanged.Invoke();
-    }
-    public void DecreaseScore(int scorePenalty)
-    {
-        score -= scorePenalty;
         scoreChanged.Invoke();
     }
 }
