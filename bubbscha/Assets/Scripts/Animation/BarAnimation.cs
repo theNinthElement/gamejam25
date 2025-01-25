@@ -17,11 +17,11 @@ namespace Animation
         private float _currentValue = 1;
         private float _currentTarget;
 
-        [Range(0, 1)] public float Testing;
+        //[Range(0, 1)] public float Testing;
 
         private void Update()
         {
-            UpdateBar(Testing);
+            //UpdateBar(Testing);
         }
 
         private void OnValidate()
