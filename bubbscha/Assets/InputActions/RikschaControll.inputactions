@@ -50,6 +50,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "TurboRotation",
+                    "type": "Button",
+                    "id": "b6c69b24-bb2e-48aa-9922-71396aa4e522",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -98,46 +107,57 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "0856b786-9296-4dd6-bea2-e0d75e60a466",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "1844fd78-4cf1-4b90-a632-f0ba1020d24c",
+                    "path": "<Mouse>/delta/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "BowlRotationX",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "98a3b51f-cb41-4a1f-a3de-7fbe3b013efe",
-                    "path": "<Mouse>/delta/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "BowlRotationX",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "10ab2074-1556-46f6-bd98-f2a3998fd397",
-                    "path": "<Mouse>/delta/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "BowlRotationX",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
                     "id": "b7795514-8c9d-4152-8000-b0e38425728c",
                     "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Scale(factor=10)",
                     "groups": "",
                     "action": "BowlRotationX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42ee15db-3d9a-4f73-b6cc-198b7a529693",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurboRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ae3fcdc-71aa-4ba8-b96a-db8d6d452b2b",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurboRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19cbfdef-cd6c-4fd1-a3fa-c28a0decae7f",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurboRotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
