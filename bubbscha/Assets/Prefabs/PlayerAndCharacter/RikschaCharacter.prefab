@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4298184424370072626}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 1778287619005394291}
   - component: {fileID: 4139423461955296316}
   - component: {fileID: 8494606804208712987}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,12 +60,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2854976178007730509}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0.093}
-  m_LocalScale: {x: 1.3, y: 0.1, z: 0.7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.099999994, z: 0.092999995}
+  m_LocalScale: {x: 2, y: 0.1, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4353226280845303734}
+  m_Father: {fileID: 8665322628210548967}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1778287619005394291
 MeshFilter:
@@ -138,6 +138,66 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3321682734991173957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8665322628210548967}
+  - component: {fileID: 1671739115213397564}
+  m_Layer: 7
+  m_Name: Bowl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8665322628210548967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321682734991173957}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6223976741387252939}
+  m_Father: {fileID: 4353226280845303734}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1671739115213397564
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321682734991173957}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3330201518899197548
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +210,7 @@ GameObject:
   - component: {fileID: 2596529621855107988}
   - component: {fileID: 3628362112031147402}
   - component: {fileID: 1530200397985327951}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SeatFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +315,7 @@ GameObject:
   - component: {fileID: 7944132450461968096}
   - component: {fileID: 5874269336485278212}
   - component: {fileID: 853025433541983968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +420,7 @@ GameObject:
   - component: {fileID: 799348772938987704}
   - component: {fileID: 8792896057174901894}
   - component: {fileID: 2823204695985130515}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BackWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,8 +522,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4353226280845303734}
-  m_Layer: 0
-  m_Name: Bowl
+  m_Layer: 7
+  m_Name: BowlAnchorPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +542,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6223976741387252939}
+  - {fileID: 8665322628210548967}
   m_Father: {fileID: 3157476641044343261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6274907622898943377
@@ -495,7 +555,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3157476641044343261}
   - component: {fileID: 150283134956087900}
-  m_Layer: 0
+  - component: {fileID: 8395390424118430507}
+  m_Layer: 6
   m_Name: RikschaCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,14 +594,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rikschaTransform: {fileID: 3157476641044343261}
-  bowlTransform: {fileID: 4353226280845303734}
-  roadBounds: {x: -7, y: 7}
+  bowlAnchorPointTransform: {fileID: 4353226280845303734}
+  bowlTransform: {fileID: 8665322628210548967}
+  roadBounds: {x: -9, y: 9}
   tiltingBounds: {x: -45, y: 45}
-  moveSpeed: 5
-  moveKeepupSpeed: 3
-  tiltSpeed: 30
-  tiltKeepupSpeed: 3
+  moveSpeed: 10
+  moveKeepupSpeed: 2.5
+  tiltSpeed: 40
+  tiltKeepupSpeed: 4
   tiltTurboMultiplier: 2
+  externalPushRecoverSpeed: 2
+  externalPushForce: 0
+--- !u!54 &8395390424118430507
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6274907622898943377}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8318082063601237602
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +644,7 @@ GameObject:
   - component: {fileID: 2874140749044419000}
   - component: {fileID: 5004991994401325391}
   - component: {fileID: 4133093923826169052}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FrontFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +749,7 @@ GameObject:
   - component: {fileID: 4706972695621576609}
   - component: {fileID: 966055099659892941}
   - component: {fileID: 9015252305424547225}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +851,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3091696061143954875}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
