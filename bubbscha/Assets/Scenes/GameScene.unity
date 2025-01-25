@@ -227,7 +227,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1022004917891412676, guid: 21979230d0a549d429dfbb3a82f468d3, type: 3}
       propertyPath: mood
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1022004917891412676, guid: 21979230d0a549d429dfbb3a82f468d3, type: 3}
       propertyPath: moodChanged.m_PersistentCalls.m_Calls.Array.size

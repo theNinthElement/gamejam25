@@ -8,6 +8,7 @@ public class CollectibleMood : MonoBehaviour
     [Tooltip("Number added to the mood")]
     [SerializeField] float moodBonus;
 
+
     private void OnTriggerEnter(Collider other)
     {
         //Maybe identifier for player
