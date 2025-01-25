@@ -60,6 +60,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -8944689508374916524}
   m_SourcePrefab: {fileID: 100100000, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
+--- !u!23 &398445102083907750 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6404436000553836118, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
+  m_PrefabInstance: {fileID: 6730259286658170608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2718991969164318027 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8709227085016951739, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
+  m_PrefabInstance: {fileID: 6730259286658170608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3510368674370147200 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7913381569295117680, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
@@ -77,4 +87,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5853c8393b21a045bee180b8a2b70d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onCollect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2718991969164318027}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 398445102083907750}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3896060322214310950}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   moodBonus: 0
+--- !u!198 &3896060322214310950 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7743720830044687062, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
+  m_PrefabInstance: {fileID: 6730259286658170608}
+  m_PrefabAsset: {fileID: 0}

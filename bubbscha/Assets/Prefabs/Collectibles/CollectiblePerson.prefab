@@ -60,6 +60,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8260225941712734214}
   m_SourcePrefab: {fileID: 100100000, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
+--- !u!198 &744829669584042217 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7743720830044687062, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
+  m_PrefabInstance: {fileID: 6998896952261816895}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &932501506690932559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7913381569295117680, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
@@ -77,4 +82,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e9de57c77328849b4b5a6131e60c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onCollect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1872495041185077636}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4161382330442525801}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 744829669584042217}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   people: 1
+--- !u!23 &1872495041185077636 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8709227085016951739, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
+  m_PrefabInstance: {fileID: 6998896952261816895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4161382330442525801 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6404436000553836118, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
+  m_PrefabInstance: {fileID: 6998896952261816895}
+  m_PrefabAsset: {fileID: 0}

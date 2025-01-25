@@ -1,19 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectiblePerson : MonoBehaviour
+namespace Collectibles_Obstacles
 {
-    [Tooltip("Number of people picked up")]
-    [SerializeField] int people=1;
-
-    private void OnTriggerEnter(Collider other)
+    public class CollectiblePerson : ACollectible
     {
-        //Maybe identifier for player
-        //if (other.CompareTag("Player"))
-        //{
-        GameStats.instance.ChangePeople(people);
-        Renderer.Destroy(gameObject);
-        //}
+        [Tooltip("Number of people picked up")]
+        [SerializeField] int people=1;
+        
+        protected override void Collect()
+        {
+            GameStats.instance.ChangePeople(people);
+        }
     }
 }
