@@ -22,6 +22,7 @@ public class EnterScore : MonoBehaviour
     private void SubmitScore(InputAction.CallbackContext context)
     {
         submitScore.Invoke(gameObject.GetComponent<TMP_InputField>().text);
+        gameObject.SetActive(false);
         rikschaActions.Menu.Disable();
     }
 }

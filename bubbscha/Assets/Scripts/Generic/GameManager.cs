@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     private RikschaControll rikschaActions;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject enterScore;
     [SerializeField] GameObject continueButton;
     [SerializeField] RikschaController player;
     [SerializeField] InputActionAsset actions;
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
     {
         //TODO: Stop Game, Show Scoreboard, Player can add his Score
         Time.timeScale = 0.0f;
+        enterScore.SetActive(true);
         pauseMenu.SetActive(true);
         continueButton.SetActive(false);
     }
