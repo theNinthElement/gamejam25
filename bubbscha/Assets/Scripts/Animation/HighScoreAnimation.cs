@@ -10,7 +10,7 @@ namespace Animation
 
         public void UpdateMultiplier(int multiplier)
         {
-            _multiplier.text = _multiplier.text + "x";
+            _multiplier.text = multiplier.ToString() + "x";
         }
 
         public void UpdateScore(int score)
