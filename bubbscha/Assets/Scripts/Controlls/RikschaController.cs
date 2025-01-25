@@ -31,9 +31,12 @@ public class RikschaController : MonoBehaviour
 
     public float externalPushForce;
 
+    public Vector3 startBasePosition;
+
     // Start is called before the first frame update
     void Start()
     {
+        startBasePosition = transform.position;
         rikschaActions = new RikschaControll();
         rikschaActions.InGame.RikschaMoveHorizontal.performed += RikschaMoveHorizontal_performed;
         rikschaActions.InGame.RikschaMoveHorizontal.canceled += RikschaMoveHorizontal_performed;
@@ -74,7 +77,7 @@ public class RikschaController : MonoBehaviour
         currentPosition.x += (externalPushForce + (currentMoveValue * moveSpeed)) * Time.deltaTime;
         currentPosition.x = Mathf.Clamp(currentPosition.x, roadBounds.x, roadBounds.y);
         //rikschaTransform.position = currentPosition;
-        rikschaTransform.GetComponent<Rigidbody>().MovePosition(currentPosition);
+        rikschaTransform.GetComponent<Rigidbody>().MovePosition(startBasePosition + currentPosition);
 
         externalPushForce = Mathf.Lerp(externalPushForce, 0, externalPushRecoverSpeed * Time.deltaTime);
 
