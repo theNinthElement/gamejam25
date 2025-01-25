@@ -25,7 +25,7 @@ public class Scoreboard : MonoBehaviour
 
     public void WriteHighscore(string entry)
     {
-        Highscore highscore = new Highscore(entry, 0);
+        Highscore highscore = new Highscore(entry, GameStats.instance.GetScore());
         highscoreList.Add(highscore);
     }
 }

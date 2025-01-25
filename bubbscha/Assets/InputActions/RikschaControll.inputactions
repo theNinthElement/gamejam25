@@ -4,30 +4,8 @@
         {
             "name": "Menu",
             "id": "febddbaf-3fc4-44da-8a5e-ed2cb26f5042",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "582e3385-266a-423a-8302-0f9e00e308b0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "1212258b-fc9b-4c72-b72d-79f1bc52441e",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
+            "actions": [],
+            "bindings": []
         },
         {
             "name": "InGame",
@@ -55,6 +33,15 @@
                     "name": "TurboRotation",
                     "type": "Button",
                     "id": "b6c69b24-bb2e-48aa-9922-71396aa4e522",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PauseGame",
+                    "type": "Button",
+                    "id": "829940ba-d9bb-4026-a26c-1d96c077a8f3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -158,6 +145,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "TurboRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9707128e-b725-448c-83bc-d0dc5b04e7e2",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
