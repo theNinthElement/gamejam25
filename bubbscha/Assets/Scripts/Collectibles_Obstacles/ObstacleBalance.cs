@@ -9,7 +9,7 @@ public class ObstacleBalance : MonoBehaviour
     [SerializeField] float upward = 1f;
     private void OnCollisionEnter(Collision collision)
     {
-        GetComponent<Rigidbody>().AddRelativeForce();
+        //GetComponent<Rigidbody>().AddRelativeForce();
         //(collision.body as Rigidbody).AddExplosionForce(force,transform.position,radius,upward);
     }
     private void OnTriggerEnter(Collider other)
