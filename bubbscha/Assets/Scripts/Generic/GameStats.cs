@@ -45,7 +45,7 @@ public class GameStats : MonoBehaviour
     }
     public void ChangeMood(float moodBonus)
     {
-        mood += moodBonus * people;
+        mood = Mathf.Clamp01(mood + moodBonus);
         if (mood <= 0f)
         {
             ChangePeople(-1);
@@ -80,6 +80,7 @@ public class GameStats : MonoBehaviour
     {
         while (true)
         {
+            Debug.Log("Update Mood " + mood);
             yield return new WaitForSeconds(1);
             ChangeMood(moodOverTime * people);
         }
