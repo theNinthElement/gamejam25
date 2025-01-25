@@ -19,6 +19,8 @@ public class RikschaController : MonoBehaviour
     [Space]
     public float externalPushRecoverSpeed = 2;
 
+    private Rigidbody bowlRigi;
+
     private bool tiltTurboActive = false;
 
     private float inputMoveValue = 0;
@@ -36,7 +38,8 @@ public class RikschaController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startBasePosition = transform.position;
+        startBasePosition = rikschaTransform.position;
+        bowlRigi = bowlTransform.GetComponent<Rigidbody>();
         rikschaActions = new RikschaControll();
         rikschaActions.InGame.RikschaMoveHorizontal.performed += RikschaMoveHorizontal_performed;
         rikschaActions.InGame.RikschaMoveHorizontal.canceled += RikschaMoveHorizontal_performed;
@@ -76,8 +79,8 @@ public class RikschaController : MonoBehaviour
         //Vector3 newPos = rikschaTransform.position;
         currentPosition.x += (externalPushForce + (currentMoveValue * moveSpeed)) * Time.deltaTime;
         currentPosition.x = Mathf.Clamp(currentPosition.x, roadBounds.x, roadBounds.y);
-        //rikschaTransform.position = currentPosition;
-        rikschaTransform.GetComponent<Rigidbody>().MovePosition(startBasePosition + currentPosition);
+        rikschaTransform.position = startBasePosition + currentPosition;
+        //rikschaTransform.GetComponent<Rigidbody>().MovePosition(startBasePosition + currentPosition);
 
         externalPushForce = Mathf.Lerp(externalPushForce, 0, externalPushRecoverSpeed * Time.deltaTime);
 
@@ -87,8 +90,8 @@ public class RikschaController : MonoBehaviour
         currentTiltAngle.z -= currentTiltValue * tiltSpeed * Time.deltaTime * (tiltTurboActive ? tiltTurboMultiplier : 1);
         currentTiltAngle.z = Mathf.Clamp(currentTiltAngle.z, tiltingBounds.x, tiltingBounds.y);
         //bowlTransform.rotation = Quaternion.Euler(currentTiltAngle);
-        bowlTransform.GetComponent<Rigidbody>().MovePosition(bowlAnchorPointTransform.position);
-        bowlTransform.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(currentTiltAngle));
+        bowlRigi.MovePosition(bowlAnchorPointTransform.position);
+        bowlRigi.MoveRotation(Quaternion.Euler(currentTiltAngle));
     }
 
     public void AddExternalPushForce(float force)
