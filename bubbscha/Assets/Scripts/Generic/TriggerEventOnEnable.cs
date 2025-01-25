@@ -1,8 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Common
+namespace Generic
 {
     public class TriggerEventOnEnable : MonoBehaviour
     {

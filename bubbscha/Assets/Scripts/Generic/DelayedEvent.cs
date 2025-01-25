@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Common
+namespace Generic
 {
     public class DelayedEvent : MonoBehaviour
     {
