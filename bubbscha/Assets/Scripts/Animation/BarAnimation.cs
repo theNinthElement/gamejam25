@@ -33,7 +33,7 @@ namespace Animation
         public void UpdateBar(float newValue)
         {
             if (Mathf.Approximately(_currentTarget, newValue)) return;
-            _currentTarget = newValue;
+            
 
             if (newValue > _currentTarget)
             {
@@ -44,7 +44,7 @@ namespace Animation
             {
                 _negativeChange.Invoke();
             }
-
+            _currentTarget = newValue;
             if (_activeCoroutine != null)
                 StopCoroutine(_activeCoroutine);
             _activeCoroutine = StartCoroutine(AnimateBar(newValue));
