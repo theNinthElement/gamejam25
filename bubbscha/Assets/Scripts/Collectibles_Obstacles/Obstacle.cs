@@ -19,13 +19,11 @@ public class Obstacle : MonoBehaviour
         bool left = Random.value <= 0.5f;
         if (left)
         {
-            Debug.Log("Left");
             _cooldown = Time.time + 1;
             GameManager.instance.PlayerCollision(-force);
         }
         else
         {
-            Debug.Log("Right");
             _cooldown = Time.time + 1;
             GameManager.instance.PlayerCollision(force);
         }
