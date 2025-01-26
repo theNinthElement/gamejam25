@@ -261,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4374373226352564109, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_text
-      value: Restart the Game
+      value: Replay
       objectReference: {fileID: 0}
     - target: {fileID: 5653382485614371057, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_LocalPosition.x
@@ -454,7 +454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5601366690659298669, guid: 2cac4de1acb92a0498133e79808e1546, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5601366690659298669, guid: 2cac4de1acb92a0498133e79808e1546, type: 3}
       propertyPath: m_LocalPosition.z
