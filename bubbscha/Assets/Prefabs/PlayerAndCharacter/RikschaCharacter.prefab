@@ -400,7 +400,7 @@ MonoBehaviour:
   rikschaTransform: {fileID: 2621519102782207635}
   bowlAnchorPointTransform: {fileID: 8516428305540184174}
   bowlTransform: {fileID: 6595893171089659134}
-  roadBounds: {x: -5.3, y: 5.3}
+  roadBounds: {x: -5, y: 5}
   tiltingBounds: {x: -45, y: 45}
   moveSpeed: 10
   moveKeepupSpeed: 2.5

@@ -35,6 +35,10 @@ public class BubbleBehaviour : MonoBehaviour
     private void Update()
     {
         airTime += Time.deltaTime;
+        if (transform.position.y <= -3)
+        {
+            transform.position = new Vector3(0, 5, transform.position.z);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
