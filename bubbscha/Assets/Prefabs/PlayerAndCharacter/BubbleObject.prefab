@@ -45,7 +45,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607997734913904165}
   serializedVersion: 4
-  m_Mass: 20
+  m_Mass: 1
   m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -77,12 +77,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityMultiplier: 1
+  borderBounceForce: 3000
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
   bowlLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  borderLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
   popEffect: {fileID: 8170996825716333434}
   hitGroundAudio: {fileID: 7749946674444824502}
 --- !u!135 &6042618791433221079

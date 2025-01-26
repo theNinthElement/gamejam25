@@ -7,8 +7,10 @@ public class BubbleBehaviour : MonoBehaviour
     private Rigidbody rigi;
 
     public float gravityMultiplier = 0.1f;
+    public float borderBounceForce = 2000f;
     public LayerMask groundLayerMask;
     public LayerMask bowlLayerMask;
+    public LayerMask borderLayerMask;
     public ParticleSystem popEffect;
     public AudioSource hitGroundAudio;
 
@@ -55,6 +57,13 @@ public class BubbleBehaviour : MonoBehaviour
             if (hitGroundAudio != null)
             {
                 hitGroundAudio.Play();
+            }
+        }
+        if (borderLayerMask == (borderLayerMask | (1 << collision.gameObject.layer)))
+        {
+            if (collision.contacts.Length > 0)
+            {
+                rigi.AddForce((collision.contacts[0].point - transform.position).normalized * borderBounceForce); 
             }
         }
     }
