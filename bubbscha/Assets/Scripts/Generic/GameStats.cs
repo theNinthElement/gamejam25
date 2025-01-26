@@ -17,11 +17,14 @@ public class GameStats : MonoBehaviour
     [SerializeField] int scoreOverTime = 10;
     [Tooltip("Decrase of mood per second")]
     [SerializeField] float moodOverTime = -0.01f;
-    
+    [Tooltip("Decrase of mood while bubble is on the ground")]
+    [SerializeField][Range(-1,0)] float moodBubbleOnStreet = -0.1f;
+
     public UnityEvent<float> moodChanged;
     public UnityEvent<int> scoreChanged;
     public UnityEvent<int> peopleChanged;
     public UnityEvent gameOver;
+    private bool bubbleOnGround;
     
     private void Awake()
     {
@@ -50,12 +53,24 @@ public class GameStats : MonoBehaviour
         return score;
     }
 
+    public void GroundBubble(bool onGround)
+    {
+        bubbleOnGround = onGround;
+    }
+
     IEnumerator moodDecrease()
     {
         while (true)
         {
             yield return null;
-            ChangeMood(moodOverTime * Time.deltaTime);
+            if (bubbleOnGround)
+            {
+                ChangeMood(moodBubbleOnStreet * Time.deltaTime);
+            }
+            else
+            {
+                ChangeMood(moodOverTime * Time.deltaTime);
+            }
         }
     }
     IEnumerator scoreIncrease()
