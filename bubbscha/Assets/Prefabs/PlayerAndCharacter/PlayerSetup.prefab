@@ -253,18 +253,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5564727184656411073, guid: d9a1fc58d5afb44449b21497ccd8d88b, type: 3}
-      propertyPath: m_Drag
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5564727184656411073, guid: d9a1fc58d5afb44449b21497ccd8d88b, type: 3}
-      propertyPath: m_Mass
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 6935666989434686966, guid: d9a1fc58d5afb44449b21497ccd8d88b, type: 3}
-      propertyPath: borderBounceForce
-      value: 9000
-      objectReference: {fileID: 0}
     - target: {fileID: 6935666989434686966, guid: d9a1fc58d5afb44449b21497ccd8d88b, type: 3}
       propertyPath: gravityMultiplier
       value: 1
