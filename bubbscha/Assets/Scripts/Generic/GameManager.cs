@@ -1,6 +1,8 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,8 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject continueButton;
     public RikschaController player;
     [SerializeField] InputActionAsset actions;
-
     public bool isRunning;
+
+    [FormerlySerializedAs("_onGameStart")] [SerializeField] private UnityEvent _onContinue;
+    [SerializeField] private UnityEvent _onPause;
     //[SerializeField] int scoreThreshold=1000;
 
     //private int thresholdCount=0;
@@ -33,6 +37,7 @@ public class GameManager : MonoBehaviour
     private void PauseGame()
     {
         pauseMenu.SetActive(true);
+        _onPause.Invoke();
         isRunning = false;
         rikschaActions.InGame.PauseGame.performed -= PauseGame;
         rikschaActions.InGame.PauseGame.performed += ContinueGame;
@@ -49,6 +54,7 @@ public class GameManager : MonoBehaviour
         isRunning = true;
         rikschaActions.InGame.PauseGame.performed += PauseGame;
         rikschaActions.InGame.PauseGame.performed -= ContinueGame;
+        _onContinue.Invoke();
         Time.timeScale = 1.0f;
     }
     private void ContinueGame(InputAction.CallbackContext context)
@@ -63,7 +69,6 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-        //TODO: Stop Game, Show Scoreboard, Player can add his Score
         isRunning = false;
         Time.timeScale = 0.0f;
         enterScore.SetActive(true);

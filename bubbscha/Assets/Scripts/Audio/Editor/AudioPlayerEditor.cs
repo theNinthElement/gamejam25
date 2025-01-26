@@ -29,7 +29,7 @@ namespace Audio.Editor
                 // Stop button
                 if (GUILayout.Button("Stop"))
                 {
-                    audioPlayer.StopLoopingAudio();
+                    audioPlayer.PauseLoopingAudio();
                 }
 
                 // Happiness Value slider
