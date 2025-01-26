@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.443224, g: 0.49246055, b: 0.5721338, a: 1}
+  m_IndirectSpecularColor: {r: 0.4432245, g: 0.49246144, b: 0.57213503, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -154,7 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1599695447}
   startPoint: {fileID: 393493807}
-  tilePrefab: {fileID: 4169495998678123873, guid: 147f40a7c55ad8f46aeaa0d42ac5405b, type: 3}
+  tilePrefabs:
+  - {fileID: 4169495998678123873, guid: 147f40a7c55ad8f46aeaa0d42ac5405b, type: 3}
+  - {fileID: 4169495998678123873, guid: f17d796adea10564bafbdb954a2a2141, type: 3}
+  - {fileID: 4169495998678123873, guid: a2036ec5b625aae4881212b31aa84d34, type: 3}
   movingSpeed: 12
   tilesToPreSpawn: 15
 --- !u!4 &338493933
@@ -517,6 +520,10 @@ PrefabInstance:
     - target: {fileID: 3318783233478863741, guid: 44edcc37756a7a54497d68a47da8f038, type: 3}
       propertyPath: m_Name
       value: Directional Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053844129232103374, guid: 44edcc37756a7a54497d68a47da8f038, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
