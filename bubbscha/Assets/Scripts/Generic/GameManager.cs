@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] InputActionAsset actions;
     public bool isRunning;
     [SerializeField] PlayableDirector introCutscenePlayable;
+    private bool isCutscenePlaying = false;
 
     [FormerlySerializedAs("_onGameStart")] [SerializeField] private UnityEvent _onContinue;
     [SerializeField] private UnityEvent _onPause;
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
         GetRikschawInputActions().PauseMenu.UnPause.performed += ContinueGame;
         GetRikschawInputActions().PauseMenu.Select.performed += Select_performed;
         GetRikschawInputActions().PauseMenu.Navigate.started += Navigate_started;
-        GetRikschawInputActions().IntroCutscene.Skip.performed += SkipCutscene;
+        GetRikschawInputActions().IntroCutscene.Skip.canceled += Skip_Performed;
         PauseGame();
         if (introCutscenePlayable != null)
         {
@@ -40,18 +41,32 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        rikschaActions.Dispose();
+    }
 
     private void Navigate_started(InputAction.CallbackContext obj)
     {
         float direction = obj.ReadValue<float>();
         Selectable nextSelected = null;
+        Selectable currentSelected = null;
+        if (EventSystem.current.currentSelectedGameObject != null)
+        {
+            currentSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>();
+        }
+        if (currentSelected == null)
+        {
+            currentSelected = restartButton;
+            nextSelected = restartButton;
+        }
         if (direction < 0)
         {
-            nextSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().navigation.selectOnLeft;
+            nextSelected = currentSelected.navigation.selectOnLeft;
         }
         else if(direction > 0)
         {
-            nextSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().navigation.selectOnRight;
+            nextSelected = currentSelected.navigation.selectOnRight;
         }
         if (nextSelected != null)
         {
@@ -66,17 +81,33 @@ public class GameManager : MonoBehaviour
 
     private void StartCutscene()
     {
+        isCutscenePlaying = true;
+        pauseMenu.SetActive(false);
         GetRikschawInputActions().IntroCutscene.Enable();
         GetRikschawInputActions().InGame.Disable();
         GetRikschawInputActions().Menu.Disable();
         GetRikschawInputActions().PauseMenu.Disable();
         introCutscenePlayable.Play();
+        introCutscenePlayable.stopped += IntroCutscenePlayable_stopped;
     }
 
-    private void SkipCutscene(InputAction.CallbackContext obj)
+    private void IntroCutscenePlayable_stopped(PlayableDirector obj)
     {
+        SkipCutscene();
+    }
+
+    private void Skip_Performed(InputAction.CallbackContext obj)
+    {
+        SkipCutscene();
+    }
+
+    private void SkipCutscene()
+    {
+        isCutscenePlaying = false;
         GetRikschawInputActions().IntroCutscene.Disable();
+        introCutscenePlayable.stopped -= IntroCutscenePlayable_stopped;
         introCutscenePlayable.time = introCutscenePlayable.duration;
+        introCutscenePlayable.Stop();
         PauseGame();
     }
 
@@ -122,7 +153,10 @@ public class GameManager : MonoBehaviour
     {
         isRunning = false;
         Time.timeScale = 0.0f;
-        enterScore.SetActive(true);
+        //if (Scoreboard.highscoreList[Scoreboard.scoreboardSize-1].score <= GameStats.instance.GetScore())
+        //{
+            enterScore.SetActive(true);
+        //}        
         pauseMenu.SetActive(true);
         continueButton.SetActive(false);
         GetRikschawInputActions().InGame.Disable();

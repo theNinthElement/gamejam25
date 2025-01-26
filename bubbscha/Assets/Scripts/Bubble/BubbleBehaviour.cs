@@ -10,6 +10,7 @@ public class BubbleBehaviour : MonoBehaviour
     public LayerMask groundLayerMask;
     public LayerMask bowlLayerMask;
     public ParticleSystem popEffect;
+    public AudioSource hitGroundAudio;
 
     private float airTime = 0;
 
@@ -50,6 +51,11 @@ public class BubbleBehaviour : MonoBehaviour
             {
                 popEffect.Play();
             }
+
+            if (hitGroundAudio != null)
+            {
+                hitGroundAudio.Play();
+            }
         }
     }
 
@@ -70,7 +76,6 @@ public class BubbleBehaviour : MonoBehaviour
         }
         else if (groundLayerMask == (groundLayerMask | (1 << collision.gameObject.layer)))
         {
-            Debug.Log("STAY");
             if (popEffect != null)
             {
                 GameStats.instance.GroundBubble(true);

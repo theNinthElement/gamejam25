@@ -23,6 +23,5 @@ public class EnterScore : MonoBehaviour
         submitScore.Invoke(gameObject.GetComponent<TMP_InputField>().text);
         GameManager.instance.GetRikschawInputActions().Menu.SubmitScore.performed -= SubmitScore;
         transform.parent.gameObject.SetActive(false);
-        //gameObject.SetActive(false);
     }
 }

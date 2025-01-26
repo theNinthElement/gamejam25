@@ -21,28 +21,29 @@ public class Scoreboard : MonoBehaviour
         }
     }
     [SerializeField] GameObject scoreboardEntry;
-    private List<Highscore> highscoreList;
+    public static List<Highscore> highscoreList;
+    public static int scoreboardSize = 7;
     void Start()
     {
-        
+
         highscoreList = new List<Highscore>();
         highscoreList = HighScoreXML.instance.ReadScores();
-        //Testentry
-        //highscoreList.Add(new Highscore("A", 100));
-        //highscoreList.Add(new Highscore("B", 200));
-        //highscoreList.Add(new Highscore("C", 400));
-        //highscoreList.Add(new Highscore("D", -100));
         highscoreList = highscoreList.OrderByDescending(h => h.score).ToList();
-        for (int i = 0; i< highscoreList.Count && i<8;i++)
+        if (highscoreList.Count > scoreboardSize)
+        {
+            highscoreList.RemoveRange(scoreboardSize, highscoreList.Count - scoreboardSize);
+        }
+            for (int i = 0; i < highscoreList.Count && i < scoreboardSize; i++)
         {
             InstanceHighscore(highscoreList[i]);
-        }        
+        }
     }
 
     public void WriteHighscore(string entry)
     {
         Highscore highscore = new Highscore(entry, GameStats.instance.GetScore());
         highscoreList.Add(highscore);
+        highscoreList = highscoreList.OrderByDescending(h => h.score).ToList();
         InstanceHighscore(highscore);
         HighScoreXML.instance.WriteScores(highscoreList);
     }
@@ -53,5 +54,6 @@ public class Scoreboard : MonoBehaviour
         scoreboardEntry.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = entry.score.ToString();
         GameObject sE = Renderer.Instantiate(scoreboardEntry);
         sE.transform.SetParent(transform, false);
+        sE.transform.SetSiblingIndex(highscoreList.FindIndex(e => e.name == entry.name));
     }
 }

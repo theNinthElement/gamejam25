@@ -48,8 +48,8 @@ MonoBehaviour:
   mood: 1
   score: 0
   scoreOverTime: 10
-  moodOverTime: -0.05
-  moodBubbleOnStreet: -0.2
+  moodOverTime: -0.08
+  moodBubbleOnStreet: -0.3
   moodChanged:
     m_PersistentCalls:
       m_Calls: []
