@@ -17,15 +17,14 @@ public class GameStats : MonoBehaviour
     [SerializeField] int scoreOverTime = 10;
     [Tooltip("Decrase of mood per second")]
     [SerializeField] float moodOverTime = -0.01f;
-    [Tooltip("Number for collected people. Multiplier for score and mood.")]
-    [SerializeField] int people = 1;
-    //[Tooltip("Movement speed of the player")]
-    //public float speed = 1f;
-    //[SerializeField] GameObject scoreboard;
+    [Tooltip("Decrase of mood while bubble is on the ground")]
+    [SerializeField][Range(-1,0)] float moodBubbleOnStreet = -0.1f;
+
     public UnityEvent<float> moodChanged;
     public UnityEvent<int> scoreChanged;
     public UnityEvent<int> peopleChanged;
     public UnityEvent gameOver;
+    private bool bubbleOnGround;
     
     private void Awake()
     {
@@ -38,12 +37,8 @@ public class GameStats : MonoBehaviour
         mood = Mathf.Clamp01(mood + moodBonus);
         if (mood <= 0f)
         {
-            ChangePeople(-1);
-            mood = 1f;
-            if (people <= 0)
-            {
-                gameOver.Invoke();
-            }
+            gameOver.Invoke();
+            return;
         }
         moodChanged.Invoke(mood);
     }
@@ -52,22 +47,30 @@ public class GameStats : MonoBehaviour
         score += scoreBonus;
         scoreChanged.Invoke(score);
     }
-    public void ChangePeople(int change)
-    {
-        people += change;
-        peopleChanged.Invoke(people);
-    }
+    
     public int GetScore()
     {
         return score;
+    }
+
+    public void GroundBubble(bool onGround)
+    {
+        bubbleOnGround = onGround;
     }
 
     IEnumerator moodDecrease()
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
-            ChangeMood(moodOverTime * people);
+            yield return null;
+            if (bubbleOnGround)
+            {
+                ChangeMood(moodBubbleOnStreet * Time.deltaTime);
+            }
+            else
+            {
+                ChangeMood(moodOverTime * Time.deltaTime);
+            }
         }
     }
     IEnumerator scoreIncrease()
@@ -75,7 +78,7 @@ public class GameStats : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1);
-            ChangeScore(scoreOverTime * people);
+            ChangeScore(scoreOverTime);
         }
     }
 }

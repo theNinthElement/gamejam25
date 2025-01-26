@@ -29,11 +29,11 @@ namespace Audio
             }
         }
         
-        public void StopLoopingAudio()
+        public void PauseLoopingAudio()
         {
             foreach (var audioSource in _audio)
             {
-                audioSource.Stop();
+                audioSource.Pause();
             }
         }
     }

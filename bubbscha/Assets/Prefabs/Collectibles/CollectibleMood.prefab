@@ -279,10 +279,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  moodBonus: 0
+      - m_Target: {fileID: 7711643867298616677}
+        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  moodBonus: 0.2
 --- !u!198 &3896060322214310950 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7743720830044687062, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
+  m_PrefabInstance: {fileID: 6730259286658170608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &7711643867298616677 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 3919235675331750805, guid: 5880b27eef1657f4cbce5e0bdd6cc339, type: 3}
   m_PrefabInstance: {fileID: 6730259286658170608}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7598446258957845551

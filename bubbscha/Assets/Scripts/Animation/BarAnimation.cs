@@ -33,18 +33,18 @@ namespace Animation
         public void UpdateBar(float newValue)
         {
             if (Mathf.Approximately(_currentTarget, newValue)) return;
-            _currentTarget = newValue;
+            
 
-            if (newValue > _currentValue)
+            if (newValue > _currentTarget)
             {
                 _positiveChange.Invoke();
             }
 
-            if (newValue < _currentValue)
+            if (newValue < _currentTarget)
             {
                 _negativeChange.Invoke();
             }
-
+            _currentTarget = newValue;
             if (_activeCoroutine != null)
                 StopCoroutine(_activeCoroutine);
             _activeCoroutine = StartCoroutine(AnimateBar(newValue));

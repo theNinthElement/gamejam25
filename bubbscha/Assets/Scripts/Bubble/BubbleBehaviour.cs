@@ -35,7 +35,6 @@ public class BubbleBehaviour : MonoBehaviour
     private void Update()
     {
         airTime += Time.deltaTime;
-        Debug.Log("AIRTIME: " + airTime);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -45,8 +44,17 @@ public class BubbleBehaviour : MonoBehaviour
             Debug.Log("POP");
             if (popEffect != null)
             {
+                GameStats.instance.GroundBubble(true);
                 popEffect.Play();
             }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (groundLayerMask == (groundLayerMask | (1 << collision.gameObject.layer)))
+        {
+            GameStats.instance.GroundBubble(false);
         }
     }
 
