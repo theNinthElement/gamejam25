@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using static Scoreboard;
@@ -31,11 +32,11 @@ public class Scoreboard : MonoBehaviour
         //highscoreList.Add(new Highscore("B", 200));
         //highscoreList.Add(new Highscore("C", 400));
         //highscoreList.Add(new Highscore("D", -100));
-
-        foreach (Highscore highscore in highscoreList)
+        highscoreList = highscoreList.OrderByDescending(h => h.score).ToList();
+        for (int i = 0; i< highscoreList.Count && i<8;i++)
         {
-            InstanceHighscore(highscore);
-        }
+            InstanceHighscore(highscoreList[i]);
+        }        
     }
 
     public void WriteHighscore(string entry)

@@ -112,7 +112,6 @@ public class GameManager : MonoBehaviour
     }
     public void EndGame()
     {
-        Debug.Log("Application closed");
         Application.Quit();
     }
 
