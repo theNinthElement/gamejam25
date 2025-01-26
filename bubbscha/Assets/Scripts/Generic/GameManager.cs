@@ -33,13 +33,10 @@ public class GameManager : MonoBehaviour
         GetRikschawInputActions().PauseMenu.Select.performed += Select_performed;
         GetRikschawInputActions().PauseMenu.Navigate.started += Navigate_started;
         GetRikschawInputActions().IntroCutscene.Skip.performed += SkipCutscene;
+        PauseGame();
         if (introCutscenePlayable != null)
         {
             StartCutscene(); 
-        }
-        else
-        {        
-            PauseGame();
         }
     }
 
@@ -79,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     private void StartCutscene()
     {
-        pauseMenu.SetActive(true);
+        pauseMenu.SetActive(false);
         GetRikschawInputActions().IntroCutscene.Enable();
         GetRikschawInputActions().InGame.Disable();
         GetRikschawInputActions().Menu.Disable();
