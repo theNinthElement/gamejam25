@@ -35,12 +35,12 @@ namespace Animation
             if (Mathf.Approximately(_currentTarget, newValue)) return;
             _currentTarget = newValue;
 
-            if (newValue > _currentValue)
+            if (newValue > _currentTarget)
             {
                 _positiveChange.Invoke();
             }
 
-            if (newValue < _currentValue)
+            if (newValue < _currentTarget)
             {
                 _negativeChange.Invoke();
             }
