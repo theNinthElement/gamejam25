@@ -29,8 +29,11 @@ public class Scoreboard : MonoBehaviour
         highscoreList = new List<Highscore>();
         highscoreList = HighScoreXML.instance.ReadScores();
         highscoreList = highscoreList.OrderByDescending(h => h.score).ToList();
-        highscoreList.RemoveRange(scoreboardSize, highscoreList.Count - scoreboardSize);
-        for (int i = 0; i < highscoreList.Count && i < scoreboardSize; i++)
+        if (highscoreList.Count > scoreboardSize)
+        {
+            highscoreList.RemoveRange(scoreboardSize, highscoreList.Count - scoreboardSize);
+        }
+            for (int i = 0; i < highscoreList.Count && i < scoreboardSize; i++)
         {
             InstanceHighscore(highscoreList[i]);
         }
