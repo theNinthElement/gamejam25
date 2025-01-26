@@ -63,8 +63,6 @@ public class GameManager : MonoBehaviour
     }
     public void RestartGame()
     {
-        Time.timeScale = 1.0f;
-        isRunning = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void GameOver()
