@@ -9,7 +9,7 @@ public class Street_Lane : MonoBehaviour
 {
     public Camera mainCamera;
     public Transform startPoint; //Point from where ground tiles will start
-    public Street_Tiles tilePrefab;
+    public Street_Tiles[] tilePrefabs;
     public float movingSpeed = 12;
     public int tilesToPreSpawn = 15; //How many tiles should be pre-spawned
 
@@ -23,6 +23,7 @@ public class Street_Lane : MonoBehaviour
         var spawnPosition = startPoint.position;
         for (var i = 0; i < tilesToPreSpawn; i++)
         {
+            var tilePrefab = tilePrefabs[Random.Range(0, tilePrefabs.Length)];
             spawnPosition -= tilePrefab.startPoint.localPosition;
             var spawnedTile = Instantiate(tilePrefab, spawnPosition, Quaternion.identity);
 
