@@ -23,9 +23,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        rikschaActions = new RikschaControll();
-        rikschaActions.InGame.PauseGame.performed += PauseGame;
-        rikschaActions.InGame.Enable();
+        GetRikschawInputActions().InGame.PauseGame.performed += PauseGame;
+        GetRikschawInputActions().InGame.Enable();
         PauseGame();
     }
 
@@ -39,8 +38,8 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(true);
         _onPause.Invoke();
         isRunning = false;
-        rikschaActions.InGame.PauseGame.performed -= PauseGame;
-        rikschaActions.InGame.PauseGame.performed += ContinueGame;
+        GetRikschawInputActions().InGame.PauseGame.performed -= PauseGame;
+        GetRikschawInputActions().InGame.PauseGame.performed += ContinueGame;
         Time.timeScale = 0.0f;
     }
 
@@ -52,8 +51,8 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         isRunning = true;
-        rikschaActions.InGame.PauseGame.performed += PauseGame;
-        rikschaActions.InGame.PauseGame.performed -= ContinueGame;
+        GetRikschawInputActions().InGame.PauseGame.performed += PauseGame;
+        GetRikschawInputActions().InGame.PauseGame.performed -= ContinueGame;
         _onContinue.Invoke();
         Time.timeScale = 1.0f;
     }
@@ -77,5 +76,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Application closed");
         Application.Quit();
+    }
+
+    public RikschaControll GetRikschawInputActions()
+    {
+        if (rikschaActions == null)
+        {
+            rikschaActions = new RikschaControll();
+        }
+        return rikschaActions;
     }
 }

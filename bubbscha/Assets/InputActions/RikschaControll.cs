@@ -90,6 +90,15 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BowlRotationXMouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""16d4ee2c-7c41-4879-9b40-23510a4c2281"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -134,17 +143,6 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RikschaMoveHorizontal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1844fd78-4cf1-4b90-a632-f0ba1020d24c"",
-                    ""path"": ""<Mouse>/delta/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BowlRotationX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -202,6 +200,96 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
                     ""action"": ""PauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b24dd85d-5407-4b7a-9d53-df455cced68b"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cf72357-ac2a-49c5-a7bf-f87d18044fe0"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BowlRotationXMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PauseMenu"",
+            ""id"": ""73e8272c-6957-4192-b332-156b48f70a1a"",
+            ""actions"": [
+                {
+                    ""name"": ""Umpause"",
+                    ""type"": ""Button"",
+                    ""id"": ""e16a943a-6f94-449c-ac42-d0abac4bc177"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Navigate"",
+                    ""type"": ""Button"",
+                    ""id"": ""33c82ee9-612c-49b4-9cc1-500b2a2b15a9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c680a7f-0792-43db-ab1d-c7e10f9cb96b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""74a06f50-2803-4c11-9967-01a54f4837ce"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Umpause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04a33983-20d6-426c-a064-fe6662d3f2ea"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96826a7e-7985-4493-80d2-79907c7100b9"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -217,6 +305,12 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         m_InGame_BowlRotationX = m_InGame.FindAction("BowlRotationX", throwIfNotFound: true);
         m_InGame_TurboRotation = m_InGame.FindAction("TurboRotation", throwIfNotFound: true);
         m_InGame_PauseGame = m_InGame.FindAction("PauseGame", throwIfNotFound: true);
+        m_InGame_BowlRotationXMouse = m_InGame.FindAction("BowlRotationXMouse", throwIfNotFound: true);
+        // PauseMenu
+        m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
+        m_PauseMenu_Umpause = m_PauseMenu.FindAction("Umpause", throwIfNotFound: true);
+        m_PauseMenu_Navigate = m_PauseMenu.FindAction("Navigate", throwIfNotFound: true);
+        m_PauseMenu_Select = m_PauseMenu.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +422,7 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_BowlRotationX;
     private readonly InputAction m_InGame_TurboRotation;
     private readonly InputAction m_InGame_PauseGame;
+    private readonly InputAction m_InGame_BowlRotationXMouse;
     public struct InGameActions
     {
         private @RikschaControll m_Wrapper;
@@ -336,6 +431,7 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         public InputAction @BowlRotationX => m_Wrapper.m_InGame_BowlRotationX;
         public InputAction @TurboRotation => m_Wrapper.m_InGame_TurboRotation;
         public InputAction @PauseGame => m_Wrapper.m_InGame_PauseGame;
+        public InputAction @BowlRotationXMouse => m_Wrapper.m_InGame_BowlRotationXMouse;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -357,6 +453,9 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
             @PauseGame.started += instance.OnPauseGame;
             @PauseGame.performed += instance.OnPauseGame;
             @PauseGame.canceled += instance.OnPauseGame;
+            @BowlRotationXMouse.started += instance.OnBowlRotationXMouse;
+            @BowlRotationXMouse.performed += instance.OnBowlRotationXMouse;
+            @BowlRotationXMouse.canceled += instance.OnBowlRotationXMouse;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -373,6 +472,9 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
             @PauseGame.started -= instance.OnPauseGame;
             @PauseGame.performed -= instance.OnPauseGame;
             @PauseGame.canceled -= instance.OnPauseGame;
+            @BowlRotationXMouse.started -= instance.OnBowlRotationXMouse;
+            @BowlRotationXMouse.performed -= instance.OnBowlRotationXMouse;
+            @BowlRotationXMouse.canceled -= instance.OnBowlRotationXMouse;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -390,6 +492,68 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         }
     }
     public InGameActions @InGame => new InGameActions(this);
+
+    // PauseMenu
+    private readonly InputActionMap m_PauseMenu;
+    private List<IPauseMenuActions> m_PauseMenuActionsCallbackInterfaces = new List<IPauseMenuActions>();
+    private readonly InputAction m_PauseMenu_Umpause;
+    private readonly InputAction m_PauseMenu_Navigate;
+    private readonly InputAction m_PauseMenu_Select;
+    public struct PauseMenuActions
+    {
+        private @RikschaControll m_Wrapper;
+        public PauseMenuActions(@RikschaControll wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Umpause => m_Wrapper.m_PauseMenu_Umpause;
+        public InputAction @Navigate => m_Wrapper.m_PauseMenu_Navigate;
+        public InputAction @Select => m_Wrapper.m_PauseMenu_Select;
+        public InputActionMap Get() { return m_Wrapper.m_PauseMenu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseMenuActions set) { return set.Get(); }
+        public void AddCallbacks(IPauseMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Add(instance);
+            @Umpause.started += instance.OnUmpause;
+            @Umpause.performed += instance.OnUmpause;
+            @Umpause.canceled += instance.OnUmpause;
+            @Navigate.started += instance.OnNavigate;
+            @Navigate.performed += instance.OnNavigate;
+            @Navigate.canceled += instance.OnNavigate;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
+        }
+
+        private void UnregisterCallbacks(IPauseMenuActions instance)
+        {
+            @Umpause.started -= instance.OnUmpause;
+            @Umpause.performed -= instance.OnUmpause;
+            @Umpause.canceled -= instance.OnUmpause;
+            @Navigate.started -= instance.OnNavigate;
+            @Navigate.performed -= instance.OnNavigate;
+            @Navigate.canceled -= instance.OnNavigate;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
+        }
+
+        public void RemoveCallbacks(IPauseMenuActions instance)
+        {
+            if (m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPauseMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PauseMenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PauseMenuActions @PauseMenu => new PauseMenuActions(this);
     public interface IMenuActions
     {
         void OnSubmitScore(InputAction.CallbackContext context);
@@ -400,5 +564,12 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         void OnBowlRotationX(InputAction.CallbackContext context);
         void OnTurboRotation(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
+        void OnBowlRotationXMouse(InputAction.CallbackContext context);
+    }
+    public interface IPauseMenuActions
+    {
+        void OnUmpause(InputAction.CallbackContext context);
+        void OnNavigate(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
 }
