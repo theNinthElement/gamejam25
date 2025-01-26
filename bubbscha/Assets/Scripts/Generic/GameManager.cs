@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public RikschaController player;
     [SerializeField] InputActionAsset actions;
     public bool isRunning;
-    [SerializeField] Playable introCutscenePlayable;
+    [SerializeField] PlayableDirector introCutscenePlayable;
 
     [FormerlySerializedAs("_onGameStart")] [SerializeField] private UnityEvent _onContinue;
     [SerializeField] private UnityEvent _onPause;
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         GetRikschawInputActions().PauseMenu.Navigate.started += Navigate_started;
         GetRikschawInputActions().IntroCutscene.Skip.performed += SkipCutscene;
         PauseGame();
-        if (introCutscenePlayable.IsValid())
+        if (introCutscenePlayable != null)
         {
             StartCutscene(); 
         }
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
     private void SkipCutscene(InputAction.CallbackContext obj)
     {
         GetRikschawInputActions().IntroCutscene.Disable();
-        introCutscenePlayable.SetTime(introCutscenePlayable.GetDuration());
+        introCutscenePlayable.time = introCutscenePlayable.duration;
         PauseGame();
     }
 
