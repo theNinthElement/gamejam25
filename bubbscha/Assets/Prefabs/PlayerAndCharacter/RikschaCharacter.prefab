@@ -843,6 +843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BowlV3
       objectReference: {fileID: 0}
+    - target: {fileID: 8791010098150682566, guid: 20c4ed0c8bdb38c4c8345a41653d202c, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: b906ab05d3534254082dd1e90106ceed, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -864,8 +868,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5819355818604695108}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 5
+  m_Drag: 2
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
