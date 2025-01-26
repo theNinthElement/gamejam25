@@ -10,6 +10,7 @@ public class BubbleBehaviour : MonoBehaviour
     public LayerMask groundLayerMask;
     public LayerMask bowlLayerMask;
     public ParticleSystem popEffect;
+    public AudioSource hitGroundAudio;
 
     private float airTime = 0;
 
@@ -49,6 +50,11 @@ public class BubbleBehaviour : MonoBehaviour
             if (popEffect != null)
             {
                 popEffect.Play();
+            }
+
+            if (hitGroundAudio != null)
+            {
+                hitGroundAudio.Play();
             }
         }
     }
