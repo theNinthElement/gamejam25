@@ -2,6 +2,7 @@
 //using System.Collections.Generic;
 using System.Collections.Generic;
 using System.Linq;
+using Collectibles_Obstacles;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,6 +50,11 @@ public class Street_Lane : MonoBehaviour
             //Move the tile to the front if it's behind the Camera
             
             _spawnedTiles.RemoveAt(0);
+            var collectibles = frontTile.GetComponentsInChildren <ACollectible>();
+            foreach (var aCollectible in collectibles)
+            {
+                aCollectible.Respawn();
+            }
             frontTile.transform.position = _spawnedTiles[^1].endPoint.position - frontTile.startPoint.localPosition;
             _spawnedTiles.Add(frontTile);
         }
