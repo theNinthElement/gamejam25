@@ -11,11 +11,15 @@ public class RikschaController : MonoBehaviour
     public Transform bowlTransform;
     public Vector2 roadBounds;
     public Vector2 tiltingBounds;
+    [Space]
     public float moveSpeed = 5;
     public float moveKeepupSpeed = 0.5f;
+    [Space]
     public float tiltSpeed = 5;
     public float tiltKeepupSpeed = 0.5f;
     public float tiltTurboMultiplier = 2;
+    public float mouseSensitivity = 1;
+    public float controllerSensitivity = 1;
     [Space]
     public float externalPushRecoverSpeed = 2;
 
@@ -28,7 +32,8 @@ public class RikschaController : MonoBehaviour
     private float currentMoveValue = 0;
     private Vector3 currentPosition = new Vector3();
 
-    private float inputTiltValue = 0;
+    private float inputControllerTiltValue = 0;
+    private float inputMouseTiltValue = 0;
     private float currentTiltValue = 0;
     private Vector3 currentTiltAngle = new Vector3();
 
@@ -41,14 +46,15 @@ public class RikschaController : MonoBehaviour
     {
         startBasePosition = rikschaTransform.position;
         bowlRigi = bowlTransform.GetComponent<Rigidbody>();
-        rikschaActions = new RikschaControll();
-        rikschaActions.InGame.RikschaMoveHorizontal.performed += RikschaMoveHorizontal_performed;
-        rikschaActions.InGame.RikschaMoveHorizontal.canceled += RikschaMoveHorizontal_performed;
-        rikschaActions.InGame.BowlRotationX.performed += BowlRotationX_performed;
-        rikschaActions.InGame.BowlRotationX.canceled += BowlRotationX_performed;
-        rikschaActions.InGame.TurboRotation.started += TurboRotation_started;
-        rikschaActions.InGame.TurboRotation.canceled += TurboRotation_canceled; 
-        rikschaActions.InGame.Enable();
+        GameManager.instance.GetRikschawInputActions().InGame.RikschaMoveHorizontal.performed += RikschaMoveHorizontal_performed;
+        GameManager.instance.GetRikschawInputActions().InGame.RikschaMoveHorizontal.canceled += RikschaMoveHorizontal_performed;
+        GameManager.instance.GetRikschawInputActions().InGame.BowlRotationX.performed += BowlRotationX_performed;
+        GameManager.instance.GetRikschawInputActions().InGame.BowlRotationX.canceled += BowlRotationX_performed;
+        GameManager.instance.GetRikschawInputActions().InGame.BowlRotationXMouse.performed += BowlRotationXMouse_performed;
+        GameManager.instance.GetRikschawInputActions().InGame.BowlRotationXMouse.canceled += BowlRotationXMouse_performed;
+        GameManager.instance.GetRikschawInputActions().InGame.TurboRotation.started += TurboRotation_started;
+        GameManager.instance.GetRikschawInputActions().InGame.TurboRotation.canceled += TurboRotation_canceled;
+        GameManager.instance.GetRikschawInputActions().InGame.Enable();
 
         GameManager.instance.player = this;
     }
@@ -60,7 +66,12 @@ public class RikschaController : MonoBehaviour
 
     private void BowlRotationX_performed(InputAction.CallbackContext obj)
     {
-        inputTiltValue = obj.ReadValue<float>();
+        inputControllerTiltValue = obj.ReadValue<float>();
+    }
+
+    private void BowlRotationXMouse_performed(InputAction.CallbackContext obj)
+    {
+        inputMouseTiltValue = obj.ReadValue<float>();
     }
 
     private void TurboRotation_started(InputAction.CallbackContext obj)
@@ -78,22 +89,23 @@ public class RikschaController : MonoBehaviour
     void Update()
     {
         currentMoveValue = Mathf.Lerp(currentMoveValue, inputMoveValue, moveKeepupSpeed * Time.deltaTime);
-        //Debug.Log("rikscha: " + currentMoveValue);
-        //Vector3 newPos = rikschaTransform.position;
         currentPosition.x += (externalPushForce + (currentMoveValue * moveSpeed)) * Time.deltaTime;
         currentPosition.x = Mathf.Clamp(currentPosition.x, roadBounds.x, roadBounds.y);
         rikschaTransform.position = startBasePosition + currentPosition;
-        //rikschaTransform.GetComponent<Rigidbody>().MovePosition(startBasePosition + currentPosition);
         rikschaAnimator.SetFloat("Blend", currentMoveValue);
 
         externalPushForce = Mathf.Lerp(externalPushForce, 0, externalPushRecoverSpeed * Time.deltaTime);
 
-        currentTiltValue = Mathf.Lerp(currentTiltValue, inputTiltValue, tiltKeepupSpeed * Time.deltaTime);
-        //Debug.Log("Bowl: " + currentTiltValue);
-        //Vector3 newRotation = bowlTransform.rotation.eulerAngles;
+        if (inputMouseTiltValue != 0 && Time.deltaTime > 0)
+        {
+            inputMouseTiltValue /= Time.deltaTime;
+            inputMouseTiltValue /= 200;
+        }
+        inputMouseTiltValue *= mouseSensitivity;
+        inputControllerTiltValue *= controllerSensitivity;
+        currentTiltValue = Mathf.Lerp(currentTiltValue, inputControllerTiltValue + inputMouseTiltValue, tiltKeepupSpeed * Time.deltaTime);
         currentTiltAngle.z -= currentTiltValue * tiltSpeed * Time.deltaTime * (tiltTurboActive ? tiltTurboMultiplier : 1);
         currentTiltAngle.z = Mathf.Clamp(currentTiltAngle.z, tiltingBounds.x, tiltingBounds.y);
-        //bowlTransform.rotation = Quaternion.Euler(currentTiltAngle);
         bowlRigi.MovePosition(bowlAnchorPointTransform.position);
         bowlRigi.MoveRotation(Quaternion.Euler(currentTiltAngle));
     }
