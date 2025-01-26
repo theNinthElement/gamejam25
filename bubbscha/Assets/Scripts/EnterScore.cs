@@ -11,6 +11,7 @@ public class EnterScore : MonoBehaviour
     private void Awake()
     {
         GameManager.instance.GetRikschawInputActions().Menu.SubmitScore.performed += SubmitScore;
+        GameManager.instance.GetRikschawInputActions().Menu.Enable();
     }
 
     private void SubmitScore(InputAction.CallbackContext context)
