@@ -122,7 +122,10 @@ public class GameManager : MonoBehaviour
     {
         isRunning = false;
         Time.timeScale = 0.0f;
-        enterScore.SetActive(true);
+        if (Scoreboard.highscoreList[Scoreboard.scoreboardSize-1].score <= GameStats.instance.GetScore())
+        {
+            enterScore.SetActive(true);
+        }        
         pauseMenu.SetActive(true);
         continueButton.SetActive(false);
         GetRikschawInputActions().InGame.Disable();

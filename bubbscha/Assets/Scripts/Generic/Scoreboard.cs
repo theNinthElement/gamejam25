@@ -22,13 +22,15 @@ public class Scoreboard : MonoBehaviour
     }
     [SerializeField] GameObject scoreboardEntry;
     public static List<Highscore> highscoreList;
+    public static int scoreboardSize = 7;
     void Start()
     {
 
         highscoreList = new List<Highscore>();
         highscoreList = HighScoreXML.instance.ReadScores();
         highscoreList = highscoreList.OrderByDescending(h => h.score).ToList();
-        for (int i = 0; i < highscoreList.Count && i < 7; i++)
+        highscoreList.RemoveRange(scoreboardSize, highscoreList.Count - scoreboardSize);
+        for (int i = 0; i < highscoreList.Count && i < scoreboardSize; i++)
         {
             InstanceHighscore(highscoreList[i]);
         }
