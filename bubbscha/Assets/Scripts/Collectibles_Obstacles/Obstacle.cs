@@ -15,17 +15,20 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Time.time < _cooldown) return;
-        bool left = Random.value <= 0.5f;
-        if (left)
+        if (LayerMask.NameToLayer("RikschaFrame") == other.gameObject.layer)
         {
-            _cooldown = Time.time + 1;
-            GameManager.instance.PlayerCollision(-force);
-        }
-        else
-        {
-            _cooldown = Time.time + 1;
-            GameManager.instance.PlayerCollision(force);
+            if (Time.time < _cooldown) return;
+            bool left = Random.value <= 0.5f;
+            if (left)
+            {
+                _cooldown = Time.time + 1;
+                GameManager.instance.PlayerCollision(-force);
+            }
+            else
+            {
+                _cooldown = Time.time + 1;
+                GameManager.instance.PlayerCollision(force);
+            }
         }
     }
 }
