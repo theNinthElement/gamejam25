@@ -54,7 +54,6 @@ public class RikschaController : MonoBehaviour
         GameManager.instance.GetRikschawInputActions().InGame.BowlRotationXMouse.canceled += BowlRotationXMouse_performed;
         GameManager.instance.GetRikschawInputActions().InGame.TurboRotation.started += TurboRotation_started;
         GameManager.instance.GetRikschawInputActions().InGame.TurboRotation.canceled += TurboRotation_canceled;
-        GameManager.instance.GetRikschawInputActions().InGame.Enable();
 
         GameManager.instance.player = this;
     }

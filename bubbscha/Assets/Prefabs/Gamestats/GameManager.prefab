@@ -50,6 +50,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 6086894718720706947}
   enterScore: {fileID: 1610979926169754622}
   continueButton: {fileID: 7224302744581114587}
+  restartButton: {fileID: 6630135880879295718}
   player: {fileID: 0}
   actions: {fileID: -944628639613478452, guid: a300f0caff2752d418cebabb47ba5d6d, type: 3}
   isRunning: 0
@@ -680,6 +681,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70f005cf937f48a47915308a4f2c817c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6630135880879295718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1253331593235550305, guid: 2e3f74fc9715d094caae8d3e35e2cdb2, type: 3}
+  m_PrefabInstance: {fileID: 5577218878254455943}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7162511919033622087 stripped

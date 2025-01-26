@@ -208,7 +208,7 @@
             "id": "73e8272c-6957-4192-b332-156b48f70a1a",
             "actions": [
                 {
-                    "name": "Umpause",
+                    "name": "UnPause",
                     "type": "Button",
                     "id": "e16a943a-6f94-449c-ac42-d0abac4bc177",
                     "expectedControlType": "Button",
@@ -218,12 +218,12 @@
                 },
                 {
                     "name": "Navigate",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "33c82ee9-612c-49b4-9cc1-500b2a2b15a9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Select",
@@ -239,35 +239,112 @@
                 {
                     "name": "",
                     "id": "74a06f50-2803-4c11-9967-01a54f4837ce",
-                    "path": "",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Umpause",
+                    "action": "UnPause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "04a33983-20d6-426c-a064-fe6662d3f2ea",
-                    "path": "",
+                    "id": "2d9b25e3-6155-4904-8552-68800f9fe23b",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Navigate",
+                    "action": "UnPause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "96826a7e-7985-4493-80d2-79907c7100b9",
-                    "path": "",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42681e44-9ad0-4787-bb78-2590a874ee4b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "43cf5b10-0009-4a43-8de9-ca6a0cd60dea",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e5416292-489c-45b4-baa1-381f14547b8f",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "ef0e0933-4536-462d-a200-66abf647936e",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "76f56b26-86b8-4eca-bac5-99ef9638af91",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e077453a-d045-4425-b4f2-94c0b42ecaa9",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "62eef6ab-652b-4e44-9cd6-3a8505fe692b",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

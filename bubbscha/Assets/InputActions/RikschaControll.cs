@@ -230,7 +230,7 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
             ""id"": ""73e8272c-6957-4192-b332-156b48f70a1a"",
             ""actions"": [
                 {
-                    ""name"": ""Umpause"",
+                    ""name"": ""UnPause"",
                     ""type"": ""Button"",
                     ""id"": ""e16a943a-6f94-449c-ac42-d0abac4bc177"",
                     ""expectedControlType"": ""Button"",
@@ -240,12 +240,12 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Navigate"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""33c82ee9-612c-49b4-9cc1-500b2a2b15a9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Select"",
@@ -261,35 +261,112 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""74a06f50-2803-4c11-9967-01a54f4837ce"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Umpause"",
+                    ""action"": ""UnPause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""04a33983-20d6-426c-a064-fe6662d3f2ea"",
-                    ""path"": """",
+                    ""id"": ""2d9b25e3-6155-4904-8552-68800f9fe23b"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Navigate"",
+                    ""action"": ""UnPause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""96826a7e-7985-4493-80d2-79907c7100b9"",
-                    ""path"": """",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42681e44-9ad0-4787-bb78-2590a874ee4b"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""43cf5b10-0009-4a43-8de9-ca6a0cd60dea"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""e5416292-489c-45b4-baa1-381f14547b8f"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""ef0e0933-4536-462d-a200-66abf647936e"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""76f56b26-86b8-4eca-bac5-99ef9638af91"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""e077453a-d045-4425-b4f2-94c0b42ecaa9"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""62eef6ab-652b-4e44-9cd6-3a8505fe692b"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -308,7 +385,7 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         m_InGame_BowlRotationXMouse = m_InGame.FindAction("BowlRotationXMouse", throwIfNotFound: true);
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
-        m_PauseMenu_Umpause = m_PauseMenu.FindAction("Umpause", throwIfNotFound: true);
+        m_PauseMenu_UnPause = m_PauseMenu.FindAction("UnPause", throwIfNotFound: true);
         m_PauseMenu_Navigate = m_PauseMenu.FindAction("Navigate", throwIfNotFound: true);
         m_PauseMenu_Select = m_PauseMenu.FindAction("Select", throwIfNotFound: true);
     }
@@ -496,14 +573,14 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
     // PauseMenu
     private readonly InputActionMap m_PauseMenu;
     private List<IPauseMenuActions> m_PauseMenuActionsCallbackInterfaces = new List<IPauseMenuActions>();
-    private readonly InputAction m_PauseMenu_Umpause;
+    private readonly InputAction m_PauseMenu_UnPause;
     private readonly InputAction m_PauseMenu_Navigate;
     private readonly InputAction m_PauseMenu_Select;
     public struct PauseMenuActions
     {
         private @RikschaControll m_Wrapper;
         public PauseMenuActions(@RikschaControll wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Umpause => m_Wrapper.m_PauseMenu_Umpause;
+        public InputAction @UnPause => m_Wrapper.m_PauseMenu_UnPause;
         public InputAction @Navigate => m_Wrapper.m_PauseMenu_Navigate;
         public InputAction @Select => m_Wrapper.m_PauseMenu_Select;
         public InputActionMap Get() { return m_Wrapper.m_PauseMenu; }
@@ -515,9 +592,9 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PauseMenuActionsCallbackInterfaces.Add(instance);
-            @Umpause.started += instance.OnUmpause;
-            @Umpause.performed += instance.OnUmpause;
-            @Umpause.canceled += instance.OnUmpause;
+            @UnPause.started += instance.OnUnPause;
+            @UnPause.performed += instance.OnUnPause;
+            @UnPause.canceled += instance.OnUnPause;
             @Navigate.started += instance.OnNavigate;
             @Navigate.performed += instance.OnNavigate;
             @Navigate.canceled += instance.OnNavigate;
@@ -528,9 +605,9 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IPauseMenuActions instance)
         {
-            @Umpause.started -= instance.OnUmpause;
-            @Umpause.performed -= instance.OnUmpause;
-            @Umpause.canceled -= instance.OnUmpause;
+            @UnPause.started -= instance.OnUnPause;
+            @UnPause.performed -= instance.OnUnPause;
+            @UnPause.canceled -= instance.OnUnPause;
             @Navigate.started -= instance.OnNavigate;
             @Navigate.performed -= instance.OnNavigate;
             @Navigate.canceled -= instance.OnNavigate;
@@ -568,7 +645,7 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
     }
     public interface IPauseMenuActions
     {
-        void OnUmpause(InputAction.CallbackContext context);
+        void OnUnPause(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
     }
