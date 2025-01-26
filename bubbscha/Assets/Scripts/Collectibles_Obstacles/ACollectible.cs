@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace Collectibles_Obstacles
@@ -10,6 +9,7 @@ namespace Collectibles_Obstacles
         private void OnTriggerEnter(Collider other)
         {
             _onCollect.Invoke();
+            Collect();
             Destroy(gameObject, 1);
         }
 
