@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     public RikschaController player;
     [SerializeField] InputActionAsset actions;
     public bool isRunning;
+    [SerializeField] Playable introCutscenePlayable;
 
     [FormerlySerializedAs("_onGameStart")] [SerializeField] private UnityEvent _onContinue;
     [SerializeField] private UnityEvent _onPause;
@@ -30,8 +32,14 @@ public class GameManager : MonoBehaviour
         GetRikschawInputActions().PauseMenu.UnPause.performed += ContinueGame;
         GetRikschawInputActions().PauseMenu.Select.performed += Select_performed;
         GetRikschawInputActions().PauseMenu.Navigate.started += Navigate_started;
+        GetRikschawInputActions().IntroCutscene.Skip.performed += SkipCutscene;
         PauseGame();
+        if (introCutscenePlayable.IsValid())
+        {
+            StartCutscene(); 
+        }
     }
+
 
     private void Navigate_started(InputAction.CallbackContext obj)
     {
@@ -54,10 +62,22 @@ public class GameManager : MonoBehaviour
     private void Select_performed(InputAction.CallbackContext obj)
     {
         ExecuteEvents.Execute<IPointerClickHandler>(EventSystem.current.currentSelectedGameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
-       // IPointerClickHandler clickHandler = EventSystem.current.currentSelectedGameObject.GetComponent<IPointerClickHandler>();
-       // if (clickHandler != null)
-       // {
-       // }
+    }
+
+    private void StartCutscene()
+    {
+        GetRikschawInputActions().IntroCutscene.Enable();
+        GetRikschawInputActions().InGame.Disable();
+        GetRikschawInputActions().Menu.Disable();
+        GetRikschawInputActions().PauseMenu.Disable();
+        introCutscenePlayable.Play();
+    }
+
+    private void SkipCutscene(InputAction.CallbackContext obj)
+    {
+        GetRikschawInputActions().IntroCutscene.Disable();
+        introCutscenePlayable.SetTime(introCutscenePlayable.GetDuration());
+        PauseGame();
     }
 
     private void PauseGame(InputAction.CallbackContext context)

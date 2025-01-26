@@ -369,6 +369,67 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""IntroCutscene"",
+            ""id"": ""8ae6d7b1-e7e0-42f9-b49f-ca34c03cde5e"",
+            ""actions"": [
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""2ce51186-abc0-4877-bd59-eeed027637e1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1722fab1-b470-4f12-8162-1cf535fa4a22"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73947a16-8f79-4f88-82a9-79f3d9e854c9"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f807c2be-4082-419f-8f19-ff56cc9cd6bc"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3cf1c17d-c35d-418a-86f4-5e70b1615806"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -388,6 +449,9 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         m_PauseMenu_UnPause = m_PauseMenu.FindAction("UnPause", throwIfNotFound: true);
         m_PauseMenu_Navigate = m_PauseMenu.FindAction("Navigate", throwIfNotFound: true);
         m_PauseMenu_Select = m_PauseMenu.FindAction("Select", throwIfNotFound: true);
+        // IntroCutscene
+        m_IntroCutscene = asset.FindActionMap("IntroCutscene", throwIfNotFound: true);
+        m_IntroCutscene_Skip = m_IntroCutscene.FindAction("Skip", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -631,6 +695,52 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         }
     }
     public PauseMenuActions @PauseMenu => new PauseMenuActions(this);
+
+    // IntroCutscene
+    private readonly InputActionMap m_IntroCutscene;
+    private List<IIntroCutsceneActions> m_IntroCutsceneActionsCallbackInterfaces = new List<IIntroCutsceneActions>();
+    private readonly InputAction m_IntroCutscene_Skip;
+    public struct IntroCutsceneActions
+    {
+        private @RikschaControll m_Wrapper;
+        public IntroCutsceneActions(@RikschaControll wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Skip => m_Wrapper.m_IntroCutscene_Skip;
+        public InputActionMap Get() { return m_Wrapper.m_IntroCutscene; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(IntroCutsceneActions set) { return set.Get(); }
+        public void AddCallbacks(IIntroCutsceneActions instance)
+        {
+            if (instance == null || m_Wrapper.m_IntroCutsceneActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_IntroCutsceneActionsCallbackInterfaces.Add(instance);
+            @Skip.started += instance.OnSkip;
+            @Skip.performed += instance.OnSkip;
+            @Skip.canceled += instance.OnSkip;
+        }
+
+        private void UnregisterCallbacks(IIntroCutsceneActions instance)
+        {
+            @Skip.started -= instance.OnSkip;
+            @Skip.performed -= instance.OnSkip;
+            @Skip.canceled -= instance.OnSkip;
+        }
+
+        public void RemoveCallbacks(IIntroCutsceneActions instance)
+        {
+            if (m_Wrapper.m_IntroCutsceneActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IIntroCutsceneActions instance)
+        {
+            foreach (var item in m_Wrapper.m_IntroCutsceneActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_IntroCutsceneActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public IntroCutsceneActions @IntroCutscene => new IntroCutsceneActions(this);
     public interface IMenuActions
     {
         void OnSubmitScore(InputAction.CallbackContext context);
@@ -648,5 +758,9 @@ public partial class @RikschaControll: IInputActionCollection2, IDisposable
         void OnUnPause(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
+    }
+    public interface IIntroCutsceneActions
+    {
+        void OnSkip(InputAction.CallbackContext context);
     }
 }
