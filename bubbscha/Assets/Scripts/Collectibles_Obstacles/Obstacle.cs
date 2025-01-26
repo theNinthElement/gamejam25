@@ -14,12 +14,10 @@ public class Obstacle : MonoBehaviour
         bool left = Random.value <= 0.5f;
         if (left)
         {
-            Debug.Log("Left");
             GameManager.instance.PlayerCollision(-force);
         }
         else
         {
-            Debug.Log("Right");
             GameManager.instance.PlayerCollision(force);
         }
     }

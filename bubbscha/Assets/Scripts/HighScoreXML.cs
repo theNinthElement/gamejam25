@@ -35,6 +35,7 @@ public class HighScoreXML : MonoBehaviour
             XmlSerializer serializer = new XmlSerializer(typeof(Leaderboard));
             FileStream stream = new FileStream(Application.persistentDataPath + "/HighScores/highscores.xml", FileMode.Open);
             leaderboard = serializer.Deserialize(stream) as Leaderboard;
+            stream.Close();
         }
 
         return leaderboard.list;
