@@ -33,12 +33,17 @@ public class GameManager : MonoBehaviour
         GetRikschawInputActions().PauseMenu.UnPause.performed += ContinueGame;
         GetRikschawInputActions().PauseMenu.Select.performed += Select_performed;
         GetRikschawInputActions().PauseMenu.Navigate.started += Navigate_started;
-        GetRikschawInputActions().IntroCutscene.Skip.performed += Skip_Performed;
+        GetRikschawInputActions().IntroCutscene.Skip.canceled += Skip_Performed;
         PauseGame();
         if (introCutscenePlayable != null)
         {
             StartCutscene(); 
         }
+    }
+
+    private void OnDestroy()
+    {
+        rikschaActions.Dispose();
     }
 
     private void Navigate_started(InputAction.CallbackContext obj)
