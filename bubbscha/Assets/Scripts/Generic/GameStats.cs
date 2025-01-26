@@ -37,7 +37,11 @@ public class GameStats : MonoBehaviour
         mood = Mathf.Clamp01(mood + moodBonus);
         if (mood <= 0f)
         {
-            gameOver.Invoke();
+            if (GameManager.instance.isRunning)
+            {
+                gameOver.Invoke();
+            }
+
             return;
         }
         moodChanged.Invoke(mood);

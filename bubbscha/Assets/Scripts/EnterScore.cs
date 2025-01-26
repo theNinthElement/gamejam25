@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class EnterScore : MonoBehaviour
 {
-    private RikschaControll rikschaActions;
     public UnityEvent<string> submitScore;
 
     private void Awake()
@@ -16,7 +15,14 @@ public class EnterScore : MonoBehaviour
 
     private void SubmitScore(InputAction.CallbackContext context)
     {
+        SubmitScore();
+    }
+
+    public void SubmitScore()
+    {
         submitScore.Invoke(gameObject.GetComponent<TMP_InputField>().text);
-        gameObject.SetActive(false);
+        GameManager.instance.GetRikschawInputActions().Menu.SubmitScore.performed -= SubmitScore;
+        transform.parent.gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 }

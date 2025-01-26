@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 6086894718720706947}
-  enterScore: {fileID: 2543711094901272071}
+  enterScore: {fileID: 1610979926169754622}
   continueButton: {fileID: 7224302744581114587}
   player: {fileID: 0}
   actions: {fileID: -944628639613478452, guid: a300f0caff2752d418cebabb47ba5d6d, type: 3}
@@ -661,9 +661,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e3f74fc9715d094caae8d3e35e2cdb2, type: 3}
---- !u!1 &2543711094901272071 stripped
+--- !u!1 &1610979926169754622 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7938527580682646144, guid: 2e3f74fc9715d094caae8d3e35e2cdb2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6574440374907406201, guid: 2e3f74fc9715d094caae8d3e35e2cdb2, type: 3}
   m_PrefabInstance: {fileID: 5577218878254455943}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6086894718720706947 stripped
