@@ -11,13 +11,16 @@ public class Obstacle : MonoBehaviour
     public UnityEvent<float> collision;
     private void OnTriggerEnter(Collider other)
     {
-        //collision.Invoke(force);        
-        GameManager.instance.PlayerCollision(force);
-        //GetComponent<Rigidbody>().AddForce(new Vector3(0, 100, 0));
-        //other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(force, transform.position, radius, upward);
-    }
-    private void OnBecameInvisible()
-    {
-        //Renderer.Destroy(gameObject);
+        bool left = Random.value <= 0.5f;
+        if (left)
+        {
+            Debug.Log("Left");
+            GameManager.instance.PlayerCollision(-force);
+        }
+        else
+        {
+            Debug.Log("Right");
+            GameManager.instance.PlayerCollision(force);
+        }
     }
 }
