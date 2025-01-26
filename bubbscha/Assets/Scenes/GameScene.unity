@@ -229,41 +229,39 @@ PrefabInstance:
       objectReference: {fileID: 1732283705}
     - target: {fileID: 1397725954591929467, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1397725954591929467, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1397725954591929467, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1397725954591929467, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 1832764551879812176, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1832764551879812176, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1832764551879812176, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1832764551879812176, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 4374373226352564109, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_text
-      value: 'Start New Game
-
-'
+      value: Restart the Game
       objectReference: {fileID: 0}
     - target: {fileID: 5653382485614371057, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_LocalPosition.x
@@ -307,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6086894718720706947, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6366787577923706788, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -319,19 +317,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7831091818977558819, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7831091818977558819, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7831091818977558819, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7831091818977558819, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8313308475085531191, guid: e8eacd6257009df41884a981e0867927, type: 3}
+      propertyPath: m_text
+      value: Play Game
       objectReference: {fileID: 0}
     - target: {fileID: 8625581999275877083, guid: e8eacd6257009df41884a981e0867927, type: 3}
       propertyPath: m_LocalPosition.y
