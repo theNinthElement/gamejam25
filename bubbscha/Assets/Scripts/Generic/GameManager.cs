@@ -33,10 +33,13 @@ public class GameManager : MonoBehaviour
         GetRikschawInputActions().PauseMenu.Select.performed += Select_performed;
         GetRikschawInputActions().PauseMenu.Navigate.started += Navigate_started;
         GetRikschawInputActions().IntroCutscene.Skip.performed += SkipCutscene;
-        PauseGame();
         if (introCutscenePlayable != null)
         {
             StartCutscene(); 
+        }
+        else
+        {        
+            PauseGame();
         }
     }
 
@@ -45,13 +48,23 @@ public class GameManager : MonoBehaviour
     {
         float direction = obj.ReadValue<float>();
         Selectable nextSelected = null;
+        Selectable currentSelected = null;
+        if (EventSystem.current.currentSelectedGameObject != null)
+        {
+            currentSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>();
+        }
+        if (currentSelected == null)
+        {
+            currentSelected = restartButton;
+            nextSelected = restartButton;
+        }
         if (direction < 0)
         {
-            nextSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().navigation.selectOnLeft;
+            nextSelected = currentSelected.navigation.selectOnLeft;
         }
         else if(direction > 0)
         {
-            nextSelected = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().navigation.selectOnRight;
+            nextSelected = currentSelected.navigation.selectOnRight;
         }
         if (nextSelected != null)
         {
@@ -66,6 +79,7 @@ public class GameManager : MonoBehaviour
 
     private void StartCutscene()
     {
+        pauseMenu.SetActive(true);
         GetRikschawInputActions().IntroCutscene.Enable();
         GetRikschawInputActions().InGame.Disable();
         GetRikschawInputActions().Menu.Disable();
@@ -77,6 +91,7 @@ public class GameManager : MonoBehaviour
     {
         GetRikschawInputActions().IntroCutscene.Disable();
         introCutscenePlayable.time = introCutscenePlayable.duration;
+        introCutscenePlayable.Stop();
         PauseGame();
     }
 
