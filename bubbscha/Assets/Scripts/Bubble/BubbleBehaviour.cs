@@ -76,7 +76,6 @@ public class BubbleBehaviour : MonoBehaviour
         }
         else if (groundLayerMask == (groundLayerMask | (1 << collision.gameObject.layer)))
         {
-            Debug.Log("STAY");
             if (popEffect != null)
             {
                 GameStats.instance.GroundBubble(true);
