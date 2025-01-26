@@ -20,9 +20,7 @@ public class Scoreboard : MonoBehaviour
         }
     }
     [SerializeField] GameObject scoreboardEntry;
-    private Vector3 scorePosition;
     private List<Highscore> highscoreList;
-    // Start is called before the first frame update
     void Start()
     {
         

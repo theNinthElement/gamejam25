@@ -44,8 +44,17 @@ public class BubbleBehaviour : MonoBehaviour
             Debug.Log("POP");
             if (popEffect != null)
             {
+                GameStats.instance.GroundBubble(true);
                 popEffect.Play();
             }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (groundLayerMask == (groundLayerMask | (1 << collision.gameObject.layer)))
+        {
+            GameStats.instance.GroundBubble(false);
         }
     }
 
